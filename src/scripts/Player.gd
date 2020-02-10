@@ -15,6 +15,7 @@ func get_direction() -> Vector2:
 	)
 	
 
+#test edit
 #Function to calculate the velocity of the player
 func calculate_move_velocity(linear_velocity: Vector2, direction: Vector2, speed: Vector2) -> Vector2:
 	var new_velocity: = linear_velocity
