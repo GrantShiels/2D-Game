@@ -3,6 +3,7 @@
 [ext_resource path="res://src/interface/title_screen/buttons/Level Select Button.tscn" type="PackedScene" id=1]
 
 [node name="Options Button" instance=ExtResource( 1 )]
+rect_min_size = Vector2( 0, 0 )
 
 [node name="Label" parent="." index="0"]
 text = "Options"

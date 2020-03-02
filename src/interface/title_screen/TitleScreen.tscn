@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/Title.png" type="Texture" id=1]
-[ext_resource path="res://src/interface/title_screen/buttons/MenuButton.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/font_title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/title-robots.png" type="Texture" id=3]
+[ext_resource path="res://src/interface/title_screen/buttons/Start Game.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interface/title_screen/buttons/Level Select Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/interface/title_screen/buttons/Options Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/interface/title_screen/buttons/Exit Game Button.tscn" type="PackedScene" id=7]
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -19,22 +24,70 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Logo" type="TextureRect" parent="Menu"]
+[node name="Title" type="Label" parent="Menu"]
 margin_right = 1040.0
-margin_bottom = 128.0
-texture = ExtResource( 1 )
-stretch_mode = 4
+margin_bottom = 184.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color_shadow = Color( 0.133333, 0.764706, 0.705882, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 7
+text = "Code Game"
+align = 1
+valign = 1
 
 [node name="Centre Row" type="HBoxContainer" parent="Menu"]
-margin_top = 132.0
+margin_top = 188.0
 margin_right = 1040.0
-margin_bottom = 560.0
+margin_bottom = 508.0
 size_flags_vertical = 3
 
 [node name="Buttons " type="VBoxContainer" parent="Menu/Centre Row"]
+margin_right = 518.0
+margin_bottom = 320.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 18
+alignment = 1
+
+[node name="Start Game Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 4 )]
+margin_top = 13.0
+margin_right = 518.0
+margin_bottom = 73.0
+
+[node name="Level Select Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 5 )]
+margin_top = 91.0
+margin_right = 518.0
+margin_bottom = 151.0
+
+[node name="Options Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 6 )]
+margin_top = 169.0
+margin_right = 518.0
+margin_bottom = 229.0
+rect_min_size = Vector2( 360, 60 )
+
+[node name="Exit Game Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 7 )]
+margin_top = 247.0
+margin_right = 518.0
+margin_bottom = 307.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/Centre Row"]
+margin_left = 522.0
 margin_right = 1040.0
-margin_bottom = 428.0
+margin_bottom = 320.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="New Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 2 )]
+[node name="Title Screen Image" type="TextureRect" parent="Menu/Centre Row/CenterContainer"]
+margin_left = 99.0
+margin_right = 419.0
+margin_bottom = 320.0
+texture = ExtResource( 3 )
+
+[node name="Details" type="Label" parent="Menu"]
+margin_top = 512.0
+margin_right = 1040.0
+margin_bottom = 577.0
+size_flags_vertical = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Grant Shiels
+Hons Project 2020"
