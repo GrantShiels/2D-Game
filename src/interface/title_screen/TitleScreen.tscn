@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/font_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/interface/title_screen/buttons/Start Game.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/interface/title_screen/buttons/Level Select Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interface/title_screen/buttons/Options Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/interface/title_screen/buttons/Exit Game Button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interface/title_screen/transition_fade/Transition.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/interface/title_screen/TitleScreen.gd" type="Script" id=9]
 
@@ -58,25 +59,29 @@ custom_constants/separation = 18
 alignment = 1
 
 [node name="Start Game Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 4 )]
-margin_top = 52.0
+margin_top = 13.0
 margin_right = 518.0
-margin_bottom = 112.0
-rect_min_size = Vector2( 360, 60 )
+margin_bottom = 73.0
 script = SubResource( 1 )
 scene_to_load = "res://src/Levels/TestLevel.tscn"
 
 [node name="Level Select Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 5 )]
-margin_top = 130.0
+margin_top = 91.0
 margin_right = 518.0
-margin_bottom = 190.0
-rect_min_size = Vector2( 360, 60 )
+margin_bottom = 151.0
 script = SubResource( 1 )
 
 [node name="Options Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 6 )]
-margin_top = 208.0
+margin_top = 169.0
 margin_right = 518.0
-margin_bottom = 268.0
+margin_bottom = 229.0
 rect_min_size = Vector2( 360, 60 )
+
+[node name="Exit Game Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 7 )]
+margin_top = 247.0
+margin_right = 518.0
+margin_bottom = 307.0
+scene_to_load = "Exit"
 
 [node name="CenterContainer" type="CenterContainer" parent="Menu/CentreRow"]
 margin_left = 522.0

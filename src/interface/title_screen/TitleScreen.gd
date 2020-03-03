@@ -8,8 +8,12 @@ func _ready():
 		
 func _on_Button_pressed(scene_to_load):
 	scene_path_to_load = scene_to_load
-	$Transition.show()
-	$Transition.fade_in()
+	
+	if scene_path_to_load == "Exit":
+		get_tree().quit()
+	else:	
+		$Transition.show()
+		$Transition.fade_in()
 
 
 func _on_Transition_fade_finished() -> void:
