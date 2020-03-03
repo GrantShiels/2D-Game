@@ -12,5 +12,5 @@ margin_right = 733.0
 margin_right = 186.0
 text = "Options Scene"
 
-[node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
+[node name="Back Button" parent="CenterContainer/VBoxContainer" index="1"]
 margin_right = 186.0

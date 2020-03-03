@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/font_title.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=2]
@@ -6,11 +6,19 @@
 [ext_resource path="res://src/interface/title_screen/buttons/Start Game.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/interface/title_screen/buttons/Level Select Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/interface/title_screen/buttons/Options Button.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/interface/title_screen/buttons/Exit Game Button.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/interface/title_screen/transition_fade/Transition.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/interface/title_screen/TitleScreen.gd" type="Script" id=9]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Button
+
+export(String) var scene_to_load
+"
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -35,13 +43,13 @@ text = "Code Game"
 align = 1
 valign = 1
 
-[node name="Centre Row" type="HBoxContainer" parent="Menu"]
+[node name="CentreRow" type="HBoxContainer" parent="Menu"]
 margin_top = 188.0
 margin_right = 1040.0
 margin_bottom = 508.0
 size_flags_vertical = 3
 
-[node name="Buttons " type="VBoxContainer" parent="Menu/Centre Row"]
+[node name="Buttons" type="VBoxContainer" parent="Menu/CentreRow"]
 margin_right = 518.0
 margin_bottom = 320.0
 size_flags_horizontal = 3
@@ -49,35 +57,35 @@ size_flags_vertical = 3
 custom_constants/separation = 18
 alignment = 1
 
-[node name="Start Game Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 4 )]
-margin_top = 13.0
+[node name="Start Game Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 4 )]
+margin_top = 52.0
 margin_right = 518.0
-margin_bottom = 73.0
-
-[node name="Level Select Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 5 )]
-margin_top = 91.0
-margin_right = 518.0
-margin_bottom = 151.0
-
-[node name="Options Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 6 )]
-margin_top = 169.0
-margin_right = 518.0
-margin_bottom = 229.0
+margin_bottom = 112.0
 rect_min_size = Vector2( 360, 60 )
+script = SubResource( 1 )
 
-[node name="Exit Game Button" parent="Menu/Centre Row/Buttons " instance=ExtResource( 7 )]
-margin_top = 247.0
+[node name="Level Select Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 5 )]
+margin_top = 130.0
 margin_right = 518.0
-margin_bottom = 307.0
+margin_bottom = 190.0
+rect_min_size = Vector2( 360, 60 )
+script = SubResource( 1 )
 
-[node name="CenterContainer" type="CenterContainer" parent="Menu/Centre Row"]
+[node name="Options Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 6 )]
+margin_top = 208.0
+margin_right = 518.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+
+[node name="CenterContainer" type="CenterContainer" parent="Menu/CentreRow"]
 margin_left = 522.0
 margin_right = 1040.0
 margin_bottom = 320.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Title Screen Image" type="TextureRect" parent="Menu/Centre Row/CenterContainer"]
+[node name="Title Screen Image" type="TextureRect" parent="Menu/CentreRow/CenterContainer"]
 margin_left = 99.0
 margin_right = 419.0
 margin_bottom = 320.0
@@ -91,3 +99,7 @@ size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Grant Shiels
 Hons Project 2020"
+
+[node name="Transition" parent="." instance=ExtResource( 8 )]
+visible = false
+[connection signal="fade_finished" from="Transition" to="." method="_on_Transition_fade_finished"]

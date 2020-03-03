@@ -12,5 +12,5 @@ margin_right = 759.0
 margin_right = 238.0
 text = "Level Select Scene"
 
-[node name="Button" parent="CenterContainer/VBoxContainer" index="1"]
+[node name="Back Button" parent="CenterContainer/VBoxContainer" index="1"]
 margin_right = 238.0
