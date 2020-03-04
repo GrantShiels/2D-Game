@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://assets/font_title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/interface/Title.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/font_default.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/title-robots.png" type="Texture" id=3]
 [ext_resource path="res://src/interface/title_screen/buttons/Start Game.tscn" type="PackedScene" id=4]
@@ -8,7 +8,7 @@
 [ext_resource path="res://src/interface/title_screen/buttons/Options Button.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/interface/title_screen/buttons/Exit Game Button.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interface/title_screen/transition_fade/Transition.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/interface/title_screen/TitleScreen.gd" type="Script" id=9]
+[ext_resource path="res://src/scripts/title_screen/TitleScreen.gd" type="Script" id=9]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Button
@@ -33,16 +33,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="Menu"]
-margin_right = 1040.0
-margin_bottom = 184.0
-custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color_shadow = Color( 0.133333, 0.764706, 0.705882, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 7
-text = "Code Game"
-align = 1
-valign = 1
+[node name="Title" parent="Menu" instance=ExtResource( 1 )]
 
 [node name="CentreRow" type="HBoxContainer" parent="Menu"]
 margin_top = 188.0
@@ -99,7 +90,7 @@ texture = ExtResource( 3 )
 [node name="Details" type="Label" parent="Menu"]
 margin_top = 512.0
 margin_right = 1040.0
-margin_bottom = 577.0
+margin_bottom = 581.0
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Grant Shiels
