@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="2D Game"
-config/icon="res://icon.png"
+config/icon="res://Klink Icon.png"
 
 [display]
 
