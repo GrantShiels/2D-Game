@@ -28,7 +28,7 @@ text = "TEST TEXT"
 [node name="Pause Overlay" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.133333, 0.764706, 0.705882, 0.380392 )
+color = Color( 0.0627451, 0.0823529, 0.0784314, 0.380392 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -62,7 +62,3 @@ margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Button" type="Button" parent="Pause Overlay/Pasue Menu"]
-margin_right = 366.0
-margin_bottom = 20.0
