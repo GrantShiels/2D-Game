@@ -23,11 +23,13 @@ custom_colors/font_color_shadow = Color( 0.133333, 0.764706, 0.705882, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 8
 text = "TEST TEXT"
+align = 1
+valign = 1
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.133333, 0.764706, 0.705882, 0.380392 )
+color = Color( 0.0352941, 0.0431373, 0.0431373, 0.380392 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
