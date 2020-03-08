@@ -5,5 +5,5 @@
 [node name="Level Select Button" instance=ExtResource( 1 )]
 scene_to_load = "res://src/Levels/Level Select.tscn"
 
-[node name="Label" parent="." index="0"]
+[node name="Big Text" parent="." index="0"]
 text = "Level Select"
