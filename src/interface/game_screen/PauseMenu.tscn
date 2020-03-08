@@ -1,14 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/font_title_pause_screen.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/interface/game_screen/Retry Level Button.tscn" type="PackedScene" id=3]
-[ext_resource path="res://src/interface/game_screen/Quit Game Button.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/interface/game_screen/Quit Level Button.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/interface/game_screen/Resume Game Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/interface/pause_screen/PauseMenu.gd" type="Script" id=7]
 
 [node name="Pause Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 7 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -76,3 +78,4 @@ margin_bottom = 82.0
 [node name="Quit Game Button" parent="Pause Overlay/Pasue Menu" instance=ExtResource( 4 )]
 margin_top = 86.0
 margin_bottom = 125.0
+[connection signal="pressed" from="Pause Overlay/Pasue Menu/Quit Game Button" to="." method="_on_Quit_Game_Button_pressed"]
