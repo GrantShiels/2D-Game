@@ -4,3 +4,7 @@ extends Control
 func _on_Quit_Game_Button_pressed():
 	get_tree().change_scene("res://src/interface/title_screen/TitleScreen.tscn")
 
+
+#When user presses button the game will no longer be paused.
+func _on_Resume_Game_Button_pressed():
+	get_tree().paused = false
