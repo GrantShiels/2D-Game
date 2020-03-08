@@ -64,3 +64,7 @@ margin_bottom = 180.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Button" type="Button" parent="Pause Overlay/Pasue Menu"]
+margin_right = 366.0
+margin_bottom = 20.0
