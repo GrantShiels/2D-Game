@@ -4,5 +4,5 @@
 
 [node name="Exit Game Button" instance=ExtResource( 1 )]
 
-[node name="Big Text" parent="." index="0"]
+[node name="Label" parent="." index="0"]
 text = "Exit Game"

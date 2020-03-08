@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/fonts/font_default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/scripts/ReturnToMenu.gd" type="Script" id=2]
-[ext_resource path="res://src/interface/game_screen/Pause Button.tscn" type="PackedScene" id=3]
+
 
 [node name="New Game" type="Control"]
 anchor_right = 1.0
@@ -17,17 +17,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
-margin_left = 518.0
-margin_top = 322.0
-margin_right = 762.0
-margin_bottom = 398.0
+margin_left = 529.0
+margin_top = 324.0
+margin_right = 750.0
+margin_bottom = 396.0
 
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
-margin_right = 244.0
-margin_bottom = 33.0
+margin_right = 221.0
+margin_bottom = 31.0
 custom_fonts/font = ExtResource( 1 )
 text = "New Game Scene"
 
-[node name="Back Button" parent="CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
-margin_bottom = 76.0
-script = ExtResource( 2 )
+[node name="Back Button" type="Button" parent="CenterContainer/VBoxContainer"]
+margin_top = 35.0
+margin_right = 221.0
+margin_bottom = 72.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back Button" to="." method="_on_Back_Button_pressed"]
