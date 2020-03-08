@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/interface/game_screen/PauseMenuButton.tscn" type="PackedScene" id=1]
+
+[node name="Resume Game Button" instance=ExtResource( 1 )]
+text = "Resume"
