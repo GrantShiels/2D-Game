@@ -24,6 +24,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="TextureButton" type="TextureButton" parent="Code Run Panel"]
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 249.0
+margin_bottom = 713.0
+
 [node name="Code Chunk Panel" type="TabContainer" parent="."]
 anchor_right = 1.0
 margin_right = -256.0
