@@ -15,6 +15,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Code Run Panel" type="PanelContainer" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -256.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code Chunk Panel" type="TabContainer" parent="."]
+anchor_right = 1.0
+margin_right = -256.0
+margin_bottom = 248.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Pause Overlay" type="ColorRect" parent="."]
 visible = false
 anchor_right = 1.0
@@ -66,22 +83,5 @@ margin_bottom = 199.0
 [node name="Quit Game Button" parent="Pause Overlay/Pasue Menu" instance=ExtResource( 6 )]
 margin_top = 203.0
 margin_bottom = 242.0
-
-[node name="Code Run Panel" type="PanelContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -312.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Code Chunk Panel" type="TabContainer" parent="."]
-anchor_right = 1.0
-margin_right = -312.0
-margin_bottom = 248.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 [connection signal="pressed" from="Pause Overlay/Pasue Menu/Resume Game Button" to="." method="_on_Resume_Game_Button_pressed"]
 [connection signal="pressed" from="Pause Overlay/Pasue Menu/Quit Game Button" to="." method="_on_Quit_Game_Button_pressed"]
