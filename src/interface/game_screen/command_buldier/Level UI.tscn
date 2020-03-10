@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=2]
+[ext_resource path="res://assets/ui-panel-tile.png" type="Texture" id=3]
 
 [node name="Level UI" type="Control"]
 anchor_right = 1.0
@@ -11,11 +12,12 @@ __meta__ = {
 }
 
 [node name="Chunk Library" type="TextureRect" parent="."]
+visible = false
 anchor_right = 1.0
-margin_right = -342.0
-margin_bottom = 512.0
-texture = ExtResource( 2 )
-stretch_mode = 1
+margin_right = -534.0
+margin_bottom = 256.0
+texture = ExtResource( 3 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -26,3 +28,24 @@ layer = 90
 [node name="Move Chunk" parent="Chunks Layer" instance=ExtResource( 1 )]
 position = Vector2( 192, 104 )
 script = null
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+anchor_left = 0.006
+anchor_top = 0.01
+anchor_right = 0.744
+anchor_bottom = 0.323
+margin_left = -8.196
+margin_top = -7.68
+margin_right = 7.69598
+margin_bottom = 7.93599
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 128, 128 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
