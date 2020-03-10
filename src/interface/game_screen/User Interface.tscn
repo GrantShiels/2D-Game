@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/fonts/font_title_pause_screen.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/interface/game_screen/Resume Game Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/interface/game_screen/pause_screen/Resume Game Button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scripts/interface/pause_screen/PauseMenu.gd" type="Script" id=4]
-[ext_resource path="res://src/interface/game_screen/Retry Level Button.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/interface/game_screen/Quit Level Button.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/interface/game_screen/pause_screen/Retry Level Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/interface/game_screen/pause_screen/Quit Level Button.tscn" type="PackedScene" id=6]
 
 [node name="User Interface" type="Control"]
 pause_mode = 2
@@ -15,25 +15,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Code Run Panel" type="PanelContainer" parent="."]
+[node name="Code Builder" type="Panel" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -256.0
+margin_left = -342.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureButton" parent="Code Run Panel"]
-margin_left = 7.0
-margin_top = 7.0
-margin_right = 249.0
-margin_bottom = 713.0
-
-[node name="Code Chunk Panel" type="TabContainer" parent="."]
-anchor_right = 1.0
-margin_right = -256.0
-margin_bottom = 248.0
+[node name="Chunk Library" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 256.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

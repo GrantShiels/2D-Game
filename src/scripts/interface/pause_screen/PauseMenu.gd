@@ -33,4 +33,5 @@ func _on_Quit_Game_Button_pressed():
 
 #When user presses button the game will no longer be paused.
 func _on_Resume_Game_Button_pressed():
-	get_tree().paused = false
+	self.paused = not paused
+	scene_tree.set_input_as_handled()
