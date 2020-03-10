@@ -32,6 +32,7 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 layer = 100
 
 [node name="User Interface" parent="User Interface Layer" instance=ExtResource( 1 )]
+margin_right = -6.0
 
 [node name="Player" type="Sprite" parent="."]
 position = Vector2( 72, 616 )
