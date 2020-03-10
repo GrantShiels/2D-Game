@@ -71,5 +71,5 @@ pause={
 
 [rendering]
 
-environment/default_clear_color=Color( 0.184314, 0.215686, 0.290196, 1 )
+environment/default_clear_color=Color( 0.227451, 0.341176, 0.439216, 1 )
 environment/default_environment="res://default_env.tres"
