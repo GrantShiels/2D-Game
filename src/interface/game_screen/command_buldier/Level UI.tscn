@@ -10,35 +10,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Chunks Layer" type="CanvasLayer" parent="."]
-layer = 90
+[node name="Panel Layer" type="CanvasLayer" parent="."]
 
-[node name="Move Chunk" parent="Chunks Layer" instance=ExtResource( 1 )]
-position = Vector2( 192, 104 )
-script = null
-
-[node name="Chunk Library" type="NinePatchRect" parent="."]
+[node name="Chunk Library" type="NinePatchRect" parent="Panel Layer"]
 anchor_left = 0.006
 anchor_top = 0.01
 anchor_right = 0.744
 anchor_bottom = 0.323
-margin_left = -8.16
+margin_left = -8.196
 margin_top = -7.68
-margin_right = 12.16
+margin_right = 7.69598
 margin_bottom = 7.93599
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 128, 128 )
-patch_margin_left = 9
-patch_margin_top = 9
-patch_margin_right = 9
-patch_margin_bottom = 9
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 25
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Chunk Command" type="NinePatchRect" parent="."]
+[node name="Chunk Command" type="NinePatchRect" parent="Panel Layer"]
 anchor_left = 0.755
 anchor_top = 0.01
 anchor_right = 0.99
@@ -49,12 +44,19 @@ margin_right = 7.65991
 margin_bottom = 7.67993
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 128, 128 )
-patch_margin_left = 9
-patch_margin_top = 9
-patch_margin_right = 9
-patch_margin_bottom = 9
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 25
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Chunks Layer" type="CanvasLayer" parent="."]
+layer = 90
+
+[node name="Move Chunk" parent="Chunks Layer" instance=ExtResource( 1 )]
+position = Vector2( 168, 64 )
+script = null
