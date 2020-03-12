@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=2]
+[ext_resource path="res://assets/Top Bar.png" type="Texture" id=3]
 
 [node name="Level UI" type="Control"]
 anchor_right = 1.0
@@ -9,13 +10,6 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Chunks Layer" type="CanvasLayer" parent="."]
-layer = 90
-
-[node name="Move Chunk" parent="Chunks Layer" instance=ExtResource( 1 )]
-position = Vector2( 168, 64 )
-script = null
 
 [node name="Panel Layer" type="CanvasLayer" parent="."]
 
@@ -60,8 +54,11 @@ axis_stretch_vertical = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+<<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
 <<<<<<< HEAD:src/interface/game_screen/command_buldier/Code Builder.tscn
 =======
+=======
+>>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
 
 [node name="Chunks Layer" type="CanvasLayer" parent="."]
 layer = 90
@@ -69,4 +66,12 @@ layer = 90
 [node name="Move Chunk" parent="Chunks Layer" instance=ExtResource( 1 )]
 position = Vector2( 168, 64 )
 script = null
+<<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
 >>>>>>> parent of 1332286... Added drag and drop function:src/interface/game_screen/command_buldier/Level UI.tscn
+=======
+
+[node name="Test Sprite" type="Sprite" parent="Chunks Layer"]
+position = Vector2( 512, 392 )
+scale = Vector2( 0.225, 0.32 )
+texture = ExtResource( 3 )
+>>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
