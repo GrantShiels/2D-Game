@@ -7,6 +7,7 @@ func _ready():
 		button.connect("pressed", self, "_on_Button_pressed", [button.scene_to_load])
 		
 func _on_Button_pressed(scene_to_load):
+	print("pressed")
 	scene_path_to_load = scene_to_load
 	
 	if scene_path_to_load == "Exit":
