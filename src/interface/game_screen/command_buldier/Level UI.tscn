@@ -55,8 +55,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 <<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
+<<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
 <<<<<<< HEAD:src/interface/game_screen/command_buldier/Code Builder.tscn
 =======
+=======
+>>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
 =======
 >>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
 
@@ -67,11 +70,17 @@ layer = 90
 position = Vector2( 168, 64 )
 script = null
 <<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
+<<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
 >>>>>>> parent of 1332286... Added drag and drop function:src/interface/game_screen/command_buldier/Level UI.tscn
 =======
+=======
+>>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
 
 [node name="Test Sprite" type="Sprite" parent="Chunks Layer"]
 position = Vector2( 512, 392 )
 scale = Vector2( 0.225, 0.32 )
 texture = ExtResource( 3 )
+<<<<<<< HEAD:src/interface/game_screen/command_buldier/Level UI.tscn
+>>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
+=======
 >>>>>>> parent of 2745e60... Removed Test Sprite:src/interface/game_screen/command_buldier/Code Builder.tscn
