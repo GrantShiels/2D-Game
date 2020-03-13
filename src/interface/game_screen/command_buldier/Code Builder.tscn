@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=1]
+[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk.tscn" type="PackedScene" id=2]
 
 [node name="Code Builder" type="Control"]
 anchor_right = 1.0
@@ -46,3 +47,8 @@ patch_margin_bottom = 24
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Code Chunks" type="CanvasLayer" parent="."]
+
+[node name="Move Chunk" parent="Code Chunks" instance=ExtResource( 2 )]
+position = Vector2( 160, 64 )
