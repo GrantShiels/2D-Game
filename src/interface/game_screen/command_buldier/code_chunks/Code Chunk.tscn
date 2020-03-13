@@ -5,8 +5,8 @@
 [ext_resource path="res://src/scripts/gameplay/code_chunks_scripts/Code Chunk.gd" type="Script" id=3]
 
 [node name="Code Chunk" type="Sprite"]
-position = Vector2( 152, 64 )
-scale = Vector2( 0.225, 0.32 )
+position = Vector2( 148, 64 )
+scale = Vector2( 0.21875, 0.32 )
 texture = ExtResource( 1 )
 script = ExtResource( 3 )
 chunk_type = "code_chunk"

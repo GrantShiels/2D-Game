@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=1]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Code Chunk Base.tscn" type="PackedScene" id=3]
 
 [node name="Code Builder" type="Control"]
 anchor_right = 1.0
@@ -27,6 +28,7 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -45,6 +47,7 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -63,27 +66,42 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
 [node name="Run Button" type="Button" parent="Builder/Command Buttons"]
-margin_left = 40.0
-margin_top = 40.0
-margin_right = 136.0
-margin_bottom = 104.0
+anchor_left = 0.116
+anchor_top = 0.278
+anchor_right = 0.395
+anchor_bottom = 0.722
+margin_left = 0.0959969
+margin_top = -0.0320053
+margin_right = 0.119995
+margin_bottom = 0.0319901
 text = "Run"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Clear Button" type="Button" parent="Builder/Command Buttons"]
-margin_left = 208.0
-margin_top = 40.0
-margin_right = 304.0
-margin_bottom = 104.0
+anchor_left = 0.605
+anchor_top = 0.278
+anchor_right = 0.884
+anchor_bottom = 0.722
+margin_left = -0.12001
+margin_top = -0.0320053
+margin_right = -0.0960083
+margin_bottom = 0.0319901
 text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Code Chunk Base" parent="Builder" instance=ExtResource( 3 )]
+position = Vector2( 128, 64 )
 
 [node name="Code Chunks" type="CanvasLayer" parent="."]
 
 [node name="Move Chunk" parent="Code Chunks" instance=ExtResource( 2 )]
-position = Vector2( 160, 64 )
+position = Vector2( 1192, 88 )
