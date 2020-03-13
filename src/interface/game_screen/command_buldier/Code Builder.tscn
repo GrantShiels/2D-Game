@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/ui-background.png" type="Texture" id=1]
+
+[node name="Code Builder" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Builder" type="CanvasLayer" parent="."]
+
+[node name="Code Library" type="NinePatchRect" parent="Builder"]
+anchor_left = 0.006
+anchor_top = 0.01
+anchor_right = 0.744
+anchor_bottom = 0.323
+margin_left = -8.196
+margin_top = -7.68
+margin_right = 7.69598
+margin_bottom = 7.93599
+texture = ExtResource( 1 )
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Command" type="NinePatchRect" parent="Builder"]
+anchor_left = 0.755
+anchor_top = 0.01
+anchor_right = 0.996
+anchor_bottom = 0.99
+margin_left = -7.33008
+margin_top = -7.68
+margin_right = 7.46399
+margin_bottom = 7.67993
+texture = ExtResource( 1 )
+patch_margin_left = 24
+patch_margin_top = 24
+patch_margin_right = 24
+patch_margin_bottom = 24
+__meta__ = {
+"_edit_use_anchors_": false
+}
