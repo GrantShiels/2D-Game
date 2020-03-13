@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Top Bar.png" type="Texture" id=1]
-[ext_resource path="res://assets/fonts/font_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/scripts/gameplay/code_chunks_scripts/Code Chunk.gd" type="Script" id=3]
 
 [node name="Code Chunk" type="Sprite"]

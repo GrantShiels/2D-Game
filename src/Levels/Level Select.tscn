@@ -5,12 +5,11 @@
 [node name="Level Select" instance=ExtResource( 1 )]
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
-margin_left = 521.0
-margin_right = 759.0
+margin_left = 552.0
+margin_top = 367.0
+margin_right = 814.0
+margin_bottom = 400.0
 
 [node name="Label" parent="CenterContainer/VBoxContainer" index="0"]
-margin_right = 238.0
+margin_right = 262.0
 text = "Level Select Scene"
-
-[node name="Back Button" parent="CenterContainer/VBoxContainer" index="1"]
-margin_right = 238.0
