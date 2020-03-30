@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/interface/game_screen/command_buldier/Code Builder.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/font/font_title.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/interface/game_screen/pause_screen/Resume Game Button.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scripts/interface/pause_screen/PauseMenu.gd" type="Script" id=4]
@@ -17,10 +16,6 @@ script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Code Builder" parent="." instance=ExtResource( 1 )]
-margin_left = -8.0
-margin_top = -9.0
 
 [node name="Pause Overlay" type="ColorRect" parent="."]
 visible = false

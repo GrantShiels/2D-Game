@@ -5,15 +5,14 @@
 [ext_resource path="res://src/scripts/gameplay/code_chunks_scripts/Code Chunk Base.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 96, 32 )
+extents = Vector2( 128, 32 )
 
 [node name="Code Chunk base" type="Area2D"]
 script = ExtResource( 3 )
+chunk_type = "defualt_chunk"
 
 [node name="Border" type="NinePatchRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_right = 192.0
+margin_right = 256.0
 margin_bottom = 64.0
 texture = ExtResource( 1 )
 patch_margin_left = 24
@@ -29,16 +28,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 6.0
-margin_top = 15.5
-margin_right = 186.0
-margin_bottom = 48.5
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 240.0
+margin_bottom = 49.0
 custom_fonts/font = ExtResource( 2 )
 text = "Chunk Name"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 96, 32 )
+position = Vector2( 128, 32 )
 shape = SubResource( 1 )
