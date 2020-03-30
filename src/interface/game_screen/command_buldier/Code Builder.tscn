@@ -34,9 +34,9 @@ __meta__ = {
 
 [node name="Command" type="NinePatchRect" parent="Builder"]
 anchor_left = 0.755
-anchor_top = 0.01
+anchor_top = 0.1975
 anchor_right = 0.996
-anchor_bottom = 0.99
+anchor_bottom = 1.1775
 margin_left = -7.33008
 margin_top = -7.68
 margin_right = 7.46399
@@ -47,33 +47,6 @@ patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 __meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Add Button" type="Button" parent="Builder/Command"]
-anchor_left = 0.046512
-anchor_top = 0.025641
-anchor_right = 0.209093
-anchor_bottom = 0.115128
-margin_right = 0.0720673
-margin_bottom = 0.160004
-text = "Add"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Clear Button" type="Button" parent="Builder/Command"]
-anchor_left = 0.791046
-anchor_top = 0.0260769
-anchor_right = 0.953605
-anchor_bottom = 0.115718
-margin_left = -0.119934
-margin_top = -0.272003
-margin_right = -0.0401001
-margin_bottom = -0.208038
-text = "Clear"
-__meta__ = {
 "_edit_use_anchors_": true
 }
 
@@ -82,25 +55,38 @@ anchor_left = 0.755
 anchor_top = 0.823
 anchor_right = 0.996
 anchor_bottom = 0.99
-margin_left = -7.33008
-margin_top = -8.06403
-margin_right = 7.46399
-margin_bottom = 7.67993
+margin_left = -7.32996
+margin_top = -632.064
+margin_right = 7.46411
+margin_bottom = -616.32
 texture = ExtResource( 1 )
 patch_margin_left = 24
 patch_margin_top = 24
 patch_margin_right = 24
 patch_margin_bottom = 24
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
+[node name="Add Button" type="Button" parent="Builder/Command Buttons"]
+anchor_left = 0.0462322
+anchor_top = 0.278
+anchor_right = 0.325232
+anchor_bottom = 0.722
+margin_left = 0.0961227
+margin_top = -0.0320053
+margin_right = 0.120117
+margin_bottom = 0.0319901
+text = "Add"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="Run Button" type="Button" parent="Builder/Command Buttons"]
-anchor_left = 0.069488
-anchor_top = 0.166889
-anchor_right = 0.929883
-anchor_bottom = 0.833112
+anchor_left = 0.348558
+anchor_top = 0.278
+anchor_right = 0.650813
+anchor_bottom = 0.722
 margin_left = 0.0961227
 margin_top = -0.0320053
 margin_right = 0.120117
@@ -110,7 +96,21 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
+[node name="Clear Button" type="Button" parent="Builder/Command Buttons"]
+anchor_left = 0.674139
+anchor_top = 0.278
+anchor_right = 0.953139
+anchor_bottom = 0.722
+margin_left = 0.0961227
+margin_top = -0.0320053
+margin_right = 0.120117
+margin_bottom = 0.0319901
+text = "Clear"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="Code Chunk Base" parent="Builder" instance=ExtResource( 3 )]
-position = Vector2( 376, 152 )
+position = Vector2( 656, 344 )
 
 [node name="Code Chunks" type="CanvasLayer" parent="."]
