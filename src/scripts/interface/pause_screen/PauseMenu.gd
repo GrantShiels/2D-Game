@@ -18,13 +18,6 @@ func set_paused(value:bool) -> void:
 	paused = value
 	scene_tree.paused = value
 	pause_overlay.visible = value
-	
-
-
-
-
-
-
 
 #When the quit game button is pressed the user will be taken to the title screen.
 func _on_Quit_Game_Button_pressed():
