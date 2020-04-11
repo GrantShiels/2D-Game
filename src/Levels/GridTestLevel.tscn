@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -9,7 +9,6 @@
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Down Chunk.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Right Chunk.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Left Chunk.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/move-chunk.png" type="Texture" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -37,32 +36,31 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="Code Chunk Layer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="Drag And Drop Area" type="Node2D" parent="Code Chunk Layer"]
-position = Vector2( 704, 0 )
-
-[node name="Origin" type="Control" parent="Code Chunk Layer/Drag And Drop Area"]
-margin_left = 32.0
+[node name="Origin" type="Control" parent="Code Chunk Layer"]
+margin_left = 736.0
 margin_top = 32.0
-margin_right = 288.0
+margin_right = 992.0
 margin_bottom = 736.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Base Chunk Sprite" parent="Code Chunk Layer/Drag And Drop Area/Origin" instance=ExtResource( 5 )]
+[node name="Base Chunk Sprite" parent="Code Chunk Layer/Origin" instance=ExtResource( 5 )]
 position = Vector2( 128, 32 )
 
-[node name="Destination" type="Control" parent="Code Chunk Layer/Drag And Drop Area"]
-margin_left = 352.0
+[node name="Destination" type="Control" parent="Code Chunk Layer"]
+margin_left = 1056.0
 margin_top = 32.0
-margin_right = 632.0
+margin_right = 1336.0
 margin_bottom = 656.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="User Interface Layer" type="CanvasLayer" parent="."]
-layer = 90
+layer = 20
 
 [node name="Chunk Library" type="NinePatchRect" parent="User Interface Layer"]
 anchor_left = 0.515
@@ -120,51 +118,11 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="User Code" type="VBoxContainer" parent="User Interface Layer"]
-anchor_left = 0.773426
-anchor_top = 0.0520833
-anchor_right = 0.977574
-anchor_bottom = 0.84375
-margin_left = -0.500122
-margin_right = 0.633911
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
 [node name="User Interface" parent="User Interface Layer" instance=ExtResource( 1 )]
 visible = false
 margin_left = 0.0
 margin_top = 0.0
-
-[node name="Popup" type="Popup" parent="User Interface Layer"]
-anchor_left = 0.439
-anchor_top = 0.396
-anchor_right = 0.562
-anchor_bottom = 0.604
-margin_left = -0.674011
-margin_top = -0.128021
-margin_right = 0.307922
-margin_bottom = 0.127991
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="User Interface Layer/Popup"]
-anchor_left = 0.006
-anchor_top = 0.05
-anchor_right = 0.997
-anchor_bottom = 0.975
-margin_left = -0.514
-margin_top = -4.0
-margin_right = 0.00698853
-texture = ExtResource( 10 )
-patch_margin_left = 25
-patch_margin_top = 25
-patch_margin_right = 25
-patch_margin_bottom = 24
-__meta__ = {
-"_edit_use_anchors_": false
-}
+mouse_filter = 2
 
 [node name="Game Level Layer" type="CanvasLayer" parent="."]
 
