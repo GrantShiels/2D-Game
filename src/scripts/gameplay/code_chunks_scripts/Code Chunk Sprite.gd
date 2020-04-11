@@ -25,6 +25,7 @@ func _process(delta):
 #When the mouse enters the sprite
 func _on_Area2D_mouse_entered():
 	mouse_in = true
+	print("test")
 
 ##when the mouse leaves the sprite
 func _on_Area2D_mouse_exited():
