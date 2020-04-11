@@ -4,6 +4,7 @@ export(String) var chunk_type
 
 var distance
 
+
 #Function allows the user to click on the code chunk.
 func _input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton \

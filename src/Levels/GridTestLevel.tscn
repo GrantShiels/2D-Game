@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 [ext_resource path="res://src/scripts/gameplay/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/level-walls.png" type="Texture" id=4]
-[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Up Chunk.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=6]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Down Chunk.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Right Chunk.tscn" type="PackedScene" id=8]
@@ -34,8 +33,32 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 
 [node name="Node" type="Node"]
 
-[node name="User Interface Layer" type="CanvasLayer" parent="."]
+[node name="Code Chunk Layer" type="CanvasLayer" parent="."]
 layer = 100
+
+[node name="Drag And Drop Area" type="Node2D" parent="Code Chunk Layer"]
+position = Vector2( 704, 0 )
+
+[node name="Origin" type="Control" parent="Code Chunk Layer/Drag And Drop Area"]
+margin_left = 32.0
+margin_top = 32.0
+margin_right = 288.0
+margin_bottom = 736.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Destination" type="Control" parent="Code Chunk Layer/Drag And Drop Area"]
+margin_left = 352.0
+margin_top = 32.0
+margin_right = 632.0
+margin_bottom = 656.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="User Interface Layer" type="CanvasLayer" parent="."]
+layer = 90
 
 [node name="Chunk Library" type="NinePatchRect" parent="User Interface Layer"]
 anchor_left = 0.515
@@ -53,10 +76,6 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Move Up Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 32.0001, 64 )
-
 [node name="Move Down Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 7 )]
 visible = false
 position = Vector2( 32.0001, 192 )
@@ -68,23 +87,6 @@ position = Vector2( 32.0001, 320 )
 [node name="Move Right Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 8 )]
 visible = false
 position = Vector2( 32.0001, 448 )
-
-[node name="Chunk Button" type="TextureButton" parent="User Interface Layer/Chunk Library"]
-anchor_left = 0.1
-anchor_top = 0.083
-anchor_right = 0.9
-anchor_bottom = 0.167
-margin_left = 5.72205e-06
-margin_top = 0.255997
-margin_right = 3.05176e-05
-margin_bottom = -0.256012
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="User Interface Layer/Chunk Library/Chunk Button"]
-margin_right = 40.0
-margin_bottom = 40.0
 
 [node name="Chunk Run" type="NinePatchRect" parent="User Interface Layer"]
 anchor_left = 0.749261
@@ -177,24 +179,3 @@ cast_to = Vector2( 0, 32 )
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 65536, 0, 0, 65546, 0, 0, 131072, 0, 0, 131082, 0, 0, 196608, 0, 0, 196618, 0, 0, 262144, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327690, 0, 0, 393216, 0, 0, 393220, 0, 0, 393222, 0, 0, 393226, 0, 0, 458752, 0, 0, 458754, 0, 0, 458756, 0, 0, 458758, 0, 0, 458762, 0, 0, 524288, 0, 0, 524290, 0, 0, 524292, 0, 0, 524294, 0, 0, 524298, 0, 0, 589824, 0, 0, 589826, 0, 0, 589828, 0, 0, 589830, 0, 0, 589834, 0, 0, 655360, 0, 0, 655362, 0, 0, 655366, 0, 0, 655370, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0 )
-
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2( 704, 0 )
-
-[node name="Origin" type="Control" parent="Node2D"]
-margin_left = 32.0
-margin_top = 32.0
-margin_right = 288.0
-margin_bottom = 736.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Destination" type="Control" parent="Node2D"]
-margin_left = 352.0
-margin_top = 32.0
-margin_right = 632.0
-margin_bottom = 656.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
