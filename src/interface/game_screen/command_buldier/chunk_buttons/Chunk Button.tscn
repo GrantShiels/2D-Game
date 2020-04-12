@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/scripts/gameplay/button_scripts/MoveChunk.gd" type="Script" id=2]
+
+[node name="Chunk Button" type="TextureButton"]
+anchor_right = 0.761
+anchor_bottom = 0.083
+margin_right = 0.473999
+margin_bottom = 0.255997
+rect_min_size = Vector2( 0, 64 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.835294, 0.0588235, 0.0588235, 1 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 1 )
+text = "Chunk Type"
+align = 1
+valign = 1
