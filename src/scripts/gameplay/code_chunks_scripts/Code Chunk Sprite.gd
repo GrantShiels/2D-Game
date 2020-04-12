@@ -7,9 +7,16 @@ export(String) var chunk_type
 var mouse_in = false
 #checks to see if the sprite is being dragged
 var dragging = false
+#used to get the starting location of the chunk
+var start_pos = Vector2()
 
+func _ready():
+	start_pos = get_position()
 
 func _process(delta):
+	#Get the starting position
+	#start_pos = get_position()
+	
 	#if mouse in and mouse button pressed
 	if mouse_in && Input.is_action_pressed("mouse_left"):
 		dragging = true
@@ -21,11 +28,15 @@ func _process(delta):
 	else:
 		dragging = false
 	
+	
+	#If the sprite isn't being dragged then  return to start position
+	if Input.is_action_just_released("mouse_left"):
+		position = start_pos
+	
 
 #When the mouse enters the sprite
 func _on_Area2D_mouse_entered():
 	mouse_in = true
-	print("test")
 
 ##when the mouse leaves the sprite
 func _on_Area2D_mouse_exited():

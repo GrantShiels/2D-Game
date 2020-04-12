@@ -46,9 +46,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Base Chunk Sprite" parent="Code Chunk Layer/Origin" instance=ExtResource( 5 )]
-position = Vector2( 128, 32 )
-
 [node name="Destination" type="Control" parent="Code Chunk Layer"]
 margin_left = 1056.0
 margin_top = 32.0
@@ -58,6 +55,15 @@ mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Base Chunk Sprite" parent="Code Chunk Layer" instance=ExtResource( 5 )]
+position = Vector2( 864, 64 )
+
+[node name="Base Chunk Sprite2" parent="Code Chunk Layer" instance=ExtResource( 5 )]
+position = Vector2( 864, 152 )
+
+[node name="Base Chunk Sprite3" parent="Code Chunk Layer" instance=ExtResource( 5 )]
+position = Vector2( 864, 240 )
 
 [node name="User Interface Layer" type="CanvasLayer" parent="."]
 layer = 20
