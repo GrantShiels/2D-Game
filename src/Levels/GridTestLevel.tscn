@@ -1,15 +1,14 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 [ext_resource path="res://src/scripts/gameplay/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/level-walls.png" type="Texture" id=4]
-[ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Move Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Move Chunk Button.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=6]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Down Chunk.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Right Chunk.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Left Chunk.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/move-chunk.png" type="Texture" id=10]
 [ext_resource path="res://src/scripts/gameplay/GridTestLevel.gd" type="Script" id=11]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
@@ -36,19 +35,20 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="Node" type="Node"]
 script = ExtResource( 11 )
 
-[node name="Code Chunk Layer" type="CanvasLayer" parent="."]
+[node name="CodeChunkLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="Code Chunks" type="Control" parent="Code Chunk Layer"]
+[node name="CodeChunks" type="Control" parent="CodeChunkLayer"]
 margin_left = 736.0
 margin_top = 32.0
 margin_right = 992.0
 margin_bottom = 736.0
+mouse_filter = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Chunk Buttons" type="VBoxContainer" parent="Code Chunk Layer/Code Chunks"]
+[node name="ChunkButtons" type="VBoxContainer" parent="CodeChunkLayer/CodeChunks"]
 margin_right = 256.0
 margin_bottom = 704.0
 size_flags_horizontal = 3
@@ -59,14 +59,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Move Button" parent="Code Chunk Layer/Code Chunks/Chunk Buttons" instance=ExtResource( 5 )]
+[node name="Move Chunk" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 5 )]
 anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 320.0
 margin_right = 256.0
 margin_bottom = 384.0
 
-[node name="Code Built" type="Control" parent="Code Chunk Layer"]
+[node name="Code Built" type="Control" parent="CodeChunkLayer"]
 margin_left = 1056.0
 margin_top = 32.0
 margin_right = 1336.0
@@ -84,13 +83,13 @@ anchor_right = 0.75
 anchor_bottom = 1.0
 margin_left = 0.509949
 margin_right = -0.500122
+mouse_filter = 1
 texture = ExtResource( 6 )
 patch_margin_left = 25
 patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 26
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
@@ -149,36 +148,6 @@ __meta__ = {
 visible = false
 margin_left = 0.0
 margin_top = 0.0
-
-[node name="Popup" type="Popup" parent="User Interface Layer"]
-anchor_left = 0.439
-anchor_top = 0.396
-anchor_right = 0.562
-anchor_bottom = 0.604
-margin_left = -0.674011
-margin_top = -0.128021
-margin_right = 0.307922
-margin_bottom = 0.127991
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="NinePatchRect" type="NinePatchRect" parent="User Interface Layer/Popup"]
-anchor_left = 0.006
-anchor_top = 0.05
-anchor_right = 0.997
-anchor_bottom = 0.975
-margin_left = -0.514
-margin_top = -4.0
-margin_right = 0.00698853
-texture = ExtResource( 10 )
-patch_margin_left = 25
-patch_margin_top = 25
-patch_margin_right = 25
-patch_margin_bottom = 24
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Game Level Layer" type="CanvasLayer" parent="."]
 
