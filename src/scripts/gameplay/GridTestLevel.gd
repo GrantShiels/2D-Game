@@ -52,5 +52,6 @@ func _on_Move_Enter_Button_pressed():
 	
 	#Create new sprite in the command block with the distance variable
 	
+	
 	#Close the up up when done
 	move_popup.visible = false
