@@ -3,14 +3,17 @@ extends Node
 #Variable used to store the current chunks type
 var current_chunk
 var current_popup
-var current_enter
-var current_close
+
+#variable that will decide which chunk to add to the command
+var chunk_to_show
 
 #Create a variable for each of the popups
 var move_popup
 var if_popup
 var while_popup
 
+#preload the chunk scenes
+var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk .tscn")
 
 func _ready():
 	
@@ -47,11 +50,20 @@ func _on_Move_Close_Button_pressed():
 func _on_Move_Enter_Button_pressed():
 	#sets up distance variable
 	var distance
+	#gets the distance from the number etered by the user
 	distance = $PopupLayer/MovePopup/Window/Content/UserEntry/Distance.value
 	print(distance)
 	
+	chunk_to_show = move_chunk.instance()
+	chunk_to_show.chunk_value = distance
+	
+	var test
+	test = chunk_to_show.chunk_value
+	print("HERE")
+	print(test)
 	#Create new sprite in the command block with the distance variable
+	var chunk_command = $CodeChunkLayer/Command/ChunkSprites
+	chunk_command.add_child(chunk_to_show)
 	
-	
-	#Close the up up when done
+	#Close the popup up when done
 	move_popup.visible = false

@@ -386,7 +386,7 @@ margin_top = 320.0
 margin_right = 256.0
 margin_bottom = 384.0
 
-[node name="Code Built" type="Control" parent="CodeChunkLayer"]
+[node name="Command" type="Control" parent="CodeChunkLayer"]
 margin_left = 1056.0
 margin_top = 32.0
 margin_right = 1312.0
@@ -395,7 +395,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChunkSprites" type="VBoxContainer" parent="CodeChunkLayer/Code Built"]
+[node name="ChunkSprites" type="VBoxContainer" parent="CodeChunkLayer/Command"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_constants/separation = 20
