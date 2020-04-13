@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/interface/game_screen/command_buldier/code_popups/Base Popup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/scripts/interface/popups/Move Popup Dropdown.gd" type="Script" id=3]
+
+[node name="Move Popup" instance=ExtResource( 1 )]
+chunk_type = "move"
+
+[node name="Title" parent="Window" index="0"]
+margin_right = 0.0639648
+text = "Move"
+
+[node name="Content" type="HBoxContainer" parent="Window" index="1"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -56.0
+margin_right = 160.0
+margin_bottom = 40.0
+grow_horizontal = 0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="VBoxContainer" parent="Window/Content" index="0"]
+margin_right = 150.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+
+[node name="Direction Label" type="Label" parent="Window/Content/Labels" index="0"]
+margin_right = 150.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 2 )
+text = "Direction:"
+
+[node name="Distance Label" type="Label" parent="Window/Content/Labels" index="1"]
+margin_top = 48.0
+margin_right = 150.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 2 )
+text = "Distance:"
+
+[node name="User Entry" type="VBoxContainer" parent="Window/Content" index="1"]
+margin_left = 170.0
+margin_right = 320.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+script = ExtResource( 3 )
+
+[node name="Direction" type="OptionButton" parent="Window/Content/User Entry" index="0"]
+margin_right = 150.0
+margin_bottom = 20.0

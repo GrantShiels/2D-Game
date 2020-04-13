@@ -1,4 +1,4 @@
-#All script for the in game UI
+#All script for the pause screen
 extends Control
 
 #When the scene first loads get the current scene tree and get the pause menu

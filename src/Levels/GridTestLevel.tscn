@@ -1,15 +1,17 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 [ext_resource path="res://src/scripts/gameplay/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/level-walls.png" type="Texture" id=4]
-[ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Move Chunk Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/ui-background.png" type="Texture" id=6]
-[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Down Chunk.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Right Chunk.tscn" type="PackedScene" id=8]
-[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Move Left Chunk.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/ui-panel-tile.png" type="Texture" id=7]
+[ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Move Chunk Button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/cancel-button.png" type="Texture" id=9]
+[ext_resource path="res://src/scripts/interface/popups/Base Popup.gd" type="Script" id=10]
 [ext_resource path="res://src/scripts/gameplay/GridTestLevel.gd" type="Script" id=11]
+[ext_resource path="res://src/scripts/interface/popups/Move Popup Dropdown.gd" type="Script" id=12]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -35,6 +37,324 @@ points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
 [node name="Node" type="Node"]
 script = ExtResource( 11 )
 
+[node name="PauseLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="User Interface" parent="PauseLayer" instance=ExtResource( 1 )]
+visible = false
+margin_left = 0.0
+margin_top = 0.0
+
+[node name="PopupLayer" type="CanvasLayer" parent="."]
+layer = 120
+
+[node name="Base Popup" type="Popup" parent="PopupLayer"]
+anchor_left = 0.515
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.509949
+margin_top = -7.68
+margin_right = -22.0
+script = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background shadow" type="ColorRect" parent="PopupLayer/Base Popup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0823529, 0.0784314, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="NinePatchRect" parent="PopupLayer/Base Popup"]
+anchor_left = 0.2
+anchor_top = 0.375
+anchor_right = 0.8
+anchor_bottom = 0.625
+margin_top = -3.05176e-05
+texture = ExtResource( 7 )
+patch_margin_left = 14
+patch_margin_top = 15
+patch_margin_right = 13
+patch_margin_bottom = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PopupLayer/Base Popup/Window"]
+anchor_top = 0.042
+anchor_right = 0.979
+anchor_bottom = 0.208
+margin_left = 8.0
+margin_top = -0.064002
+margin_right = 0.0639343
+margin_bottom = 1.06399
+custom_fonts/font = ExtResource( 5 )
+text = "Title"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buttons" type="HBoxContainer" parent="PopupLayer/Base Popup/Window"]
+anchor_left = 0.021
+anchor_top = 0.75
+anchor_right = 0.979
+anchor_bottom = 0.958
+margin_left = -0.0640011
+margin_top = -1.52588e-05
+margin_right = 0.0639954
+margin_bottom = -7.936
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Enter Button" type="Button" parent="PopupLayer/Base Popup/Window/Buttons"]
+margin_left = 44.0
+margin_right = 134.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/Base Popup/Window/Buttons/Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/Base Popup/Window/Buttons/Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Ok"
+align = 1
+valign = 1
+
+[node name="Close Button" type="Button" parent="PopupLayer/Base Popup/Window/Buttons"]
+margin_left = 234.0
+margin_right = 324.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/Base Popup/Window/Buttons/Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/Base Popup/Window/Buttons/Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Close"
+align = 1
+valign = 1
+
+[node name="MovePopup" type="Popup" parent="PopupLayer"]
+visible = true
+anchor_left = 0.515
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.509949
+margin_top = -7.68
+margin_right = -22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background shadow" type="ColorRect" parent="PopupLayer/MovePopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0823529, 0.0784314, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="NinePatchRect" parent="PopupLayer/MovePopup"]
+anchor_left = 0.2
+anchor_top = 0.375
+anchor_right = 0.8
+anchor_bottom = 0.625
+margin_top = -3.05176e-05
+texture = ExtResource( 7 )
+patch_margin_left = 14
+patch_margin_top = 15
+patch_margin_right = 13
+patch_margin_bottom = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PopupLayer/MovePopup/Window"]
+anchor_top = 0.042
+anchor_right = 0.979
+anchor_bottom = 0.208
+margin_left = 8.0
+margin_top = -0.064002
+margin_right = 0.0639648
+margin_bottom = 1.06399
+custom_fonts/font = ExtResource( 5 )
+text = "Move"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="HBoxContainer" parent="PopupLayer/MovePopup/Window"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -56.0
+margin_right = 160.0
+margin_bottom = 40.0
+grow_horizontal = 0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="VBoxContainer" parent="PopupLayer/MovePopup/Window/Content"]
+margin_right = 150.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Direction Label" type="Label" parent="PopupLayer/MovePopup/Window/Content/Labels"]
+visible = false
+margin_right = 150.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 5 )
+text = "Direction:"
+
+[node name="Distance Label" type="Label" parent="PopupLayer/MovePopup/Window/Content/Labels"]
+margin_top = 31.0
+margin_right = 150.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 5 )
+text = "Distance:"
+
+[node name="UserEntry" type="VBoxContainer" parent="PopupLayer/MovePopup/Window/Content"]
+margin_left = 170.0
+margin_right = 320.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+alignment = 1
+script = ExtResource( 12 )
+
+[node name="Direction" type="OptionButton" parent="PopupLayer/MovePopup/Window/Content/UserEntry"]
+visible = false
+margin_right = 150.0
+margin_bottom = 20.0
+hint_tooltip = "Direction for character move."
+
+[node name="Distance" type="SpinBox" parent="PopupLayer/MovePopup/Window/Content/UserEntry"]
+margin_top = 36.0
+margin_right = 150.0
+margin_bottom = 60.0
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="Buttons" type="HBoxContainer" parent="PopupLayer/MovePopup/Window"]
+anchor_left = 0.021
+anchor_top = 0.75
+anchor_right = 0.979
+anchor_bottom = 0.958
+margin_left = -0.0640011
+margin_top = -1.52588e-05
+margin_right = 0.0639954
+margin_bottom = -7.936
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Move Enter Button" type="Button" parent="PopupLayer/MovePopup/Window/Buttons"]
+margin_left = 44.0
+margin_right = 134.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/MovePopup/Window/Buttons/Move Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/MovePopup/Window/Buttons/Move Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Ok"
+align = 1
+valign = 1
+
+[node name="Move Close Button" type="Button" parent="PopupLayer/MovePopup/Window/Buttons"]
+margin_left = 234.0
+margin_right = 324.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/MovePopup/Window/Buttons/Move Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/MovePopup/Window/Buttons/Move Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Close"
+align = 1
+valign = 1
+
 [node name="CodeChunkLayer" type="CanvasLayer" parent="."]
 layer = 100
 
@@ -45,6 +365,7 @@ margin_right = 992.0
 margin_bottom = 736.0
 mouse_filter = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
@@ -56,10 +377,11 @@ size_flags_vertical = 3
 custom_constants/separation = 18
 alignment = 1
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
-[node name="Move Chunk" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 5 )]
+[node name="Move Chunk" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 8 )]
 anchor_right = 0.0
 margin_top = 320.0
 margin_right = 256.0
@@ -71,83 +393,9 @@ margin_top = 32.0
 margin_right = 1336.0
 margin_bottom = 656.0
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
-
-[node name="User Interface Layer" type="CanvasLayer" parent="."]
-layer = 90
-
-[node name="Chunk Library" type="NinePatchRect" parent="User Interface Layer"]
-anchor_left = 0.515
-anchor_right = 0.75
-anchor_bottom = 1.0
-margin_left = 0.509949
-margin_right = -0.500122
-mouse_filter = 1
-texture = ExtResource( 6 )
-patch_margin_left = 25
-patch_margin_top = 25
-patch_margin_right = 25
-patch_margin_bottom = 26
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="Move Down Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 7 )]
-visible = false
-position = Vector2( 32, 120 )
-
-[node name="Move Left Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 9 )]
-visible = false
-position = Vector2( 32.0001, 320 )
-
-[node name="Move Right Chunk" parent="User Interface Layer/Chunk Library" instance=ExtResource( 8 )]
-visible = false
-position = Vector2( 32.0001, 448 )
-
-[node name="Chunk Run" type="NinePatchRect" parent="User Interface Layer"]
-anchor_left = 0.749261
-anchor_right = 1.00183
-anchor_bottom = 1.0
-margin_left = 0.509949
-margin_right = -0.500122
-texture = ExtResource( 6 )
-patch_margin_left = 25
-patch_margin_top = 25
-patch_margin_right = 25
-patch_margin_bottom = 26
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": true
-}
-
-[node name="Button" type="Button" parent="User Interface Layer/Chunk Run"]
-anchor_left = 0.16279
-anchor_top = 0.885417
-anchor_right = 0.813743
-anchor_bottom = 0.958583
-margin_right = 0.0727234
-margin_bottom = -0.192017
-text = "Run"
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="User Code" type="VBoxContainer" parent="User Interface Layer"]
-anchor_left = 0.773426
-anchor_top = 0.0520833
-anchor_right = 0.977574
-anchor_bottom = 0.84375
-margin_left = -0.500122
-margin_right = 0.633911
-__meta__ = {
-"_edit_use_anchors_": true
-}
-
-[node name="User Interface" parent="User Interface Layer" instance=ExtResource( 1 )]
-visible = false
-margin_left = 0.0
-margin_top = 0.0
 
 [node name="Game Level Layer" type="CanvasLayer" parent="."]
 
@@ -166,3 +414,54 @@ cast_to = Vector2( 0, 32 )
 tile_set = SubResource( 2 )
 format = 1
 tile_data = PoolIntArray( 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 0, 65536, 0, 0, 65546, 0, 0, 131072, 0, 0, 131082, 0, 0, 196608, 0, 0, 196618, 0, 0, 262144, 0, 0, 262154, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327690, 0, 0, 393216, 0, 0, 393220, 0, 0, 393222, 0, 0, 393226, 0, 0, 458752, 0, 0, 458754, 0, 0, 458756, 0, 0, 458758, 0, 0, 458762, 0, 0, 524288, 0, 0, 524290, 0, 0, 524292, 0, 0, 524294, 0, 0, 524298, 0, 0, 589824, 0, 0, 589826, 0, 0, 589828, 0, 0, 589830, 0, 0, 589834, 0, 0, 655360, 0, 0, 655362, 0, 0, 655366, 0, 0, 655370, 0, 0, 720896, 0, 0, 720897, 0, 0, 720898, 0, 0, 720899, 0, 0, 720900, 0, 0, 720901, 0, 0, 720902, 0, 0, 720903, 0, 0, 720904, 0, 0, 720905, 0, 0, 720906, 0, 0 )
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="Chunk Library" type="NinePatchRect" parent="Background"]
+anchor_left = 0.515
+anchor_right = 0.75
+anchor_bottom = 1.0
+margin_left = 0.509949
+margin_right = -0.500122
+mouse_filter = 1
+texture = ExtResource( 6 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 26
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Chunk Run" type="NinePatchRect" parent="Background"]
+anchor_left = 0.749261
+anchor_right = 0.984261
+anchor_bottom = 1.0
+margin_left = 0.509949
+margin_right = -0.500122
+texture = ExtResource( 6 )
+patch_margin_left = 25
+patch_margin_top = 25
+patch_margin_right = 25
+patch_margin_bottom = 26
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": true
+}
+
+[node name="Button" type="Button" parent="Background/Chunk Run"]
+anchor_left = 0.16279
+anchor_top = 0.885417
+anchor_right = 0.813743
+anchor_bottom = 0.958583
+margin_right = 0.0727234
+margin_bottom = -0.192017
+text = "Run"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+[connection signal="pressed" from="PopupLayer/Base Popup/Window/Buttons/Close Button" to="PopupLayer/Base Popup" method="_on_Close_Button_pressed"]
+[connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Enter Button" to="." method="_on_Move_Enter_Button_pressed"]
+[connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Close Button" to="." method="_on_Move_Close_Button_pressed"]
