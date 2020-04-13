@@ -52,15 +52,13 @@ func _on_Move_Enter_Button_pressed():
 	var distance
 	#gets the distance from the number etered by the user
 	distance = $PopupLayer/MovePopup/Window/Content/UserEntry/Distance.value
-	print(distance)
 	
+	#Creates a new instace of the move chunk
 	chunk_to_show = move_chunk.instance()
+	#Sets the value for that chunk to the user entered distance
 	chunk_to_show.chunk_value = distance
 	
-	var test
-	test = chunk_to_show.chunk_value
-	print("HERE")
-	print(test)
+
 	#Create new sprite in the command block with the distance variable
 	var chunk_command = $CodeChunkLayer/Command/ChunkSprites
 	chunk_command.add_child(chunk_to_show)
