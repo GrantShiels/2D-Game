@@ -89,13 +89,24 @@ func _on_Direction_Close_Button_pressed():
 func _on_Direction_Enter_Button_pressed():
 	#Sets up the direction variable
 	var direction
+	var direction_string
 	#Gets the direction from the drop down box in the popup.
 	direction = $PopupLayer/DirectionPopup/Window/Content/UserEntry/Direction.selected
+	
+	#Convert the direction int to string
+	if direction == 0:
+		direction_string = "Up"
+	elif direction == 1:
+		direction_string = "Down"
+	elif direction == 2:
+		direction_string = "Left"
+	elif direction == 3:
+		direction_string = "Right"
 	
 	#Creates a new instance of the direction chunk
 	chunk_to_show = direction_chunk.instance()
 	#Sets the calue of the chunk to the user entered variable
-	chunk_to_show.chunk_value = direction
+	chunk_to_show.chunk_value = direction_string
 	
 	#Creates a new chunk in the command block with the direction variable
 	chunk_command.add_child(chunk_to_show)
