@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://src/scripts/interface/popups/Base Popup.gd" type="Script" id=10]
 [ext_resource path="res://src/scripts/gameplay/GridTestLevel.gd" type="Script" id=11]
 [ext_resource path="res://src/scripts/interface/popups/Move Popup Dropdown.gd" type="Script" id=12]
+[ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Direction Chunk Button.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -244,13 +245,6 @@ rect_min_size = Vector2( 150, 0 )
 custom_constants/separation = 15
 alignment = 1
 
-[node name="Direction Label" type="Label" parent="PopupLayer/MovePopup/Window/Content/Labels"]
-visible = false
-margin_right = 150.0
-margin_bottom = 33.0
-custom_fonts/font = ExtResource( 5 )
-text = "Direction:"
-
 [node name="Distance Label" type="Label" parent="PopupLayer/MovePopup/Window/Content/Labels"]
 margin_top = 31.0
 margin_right = 150.0
@@ -266,12 +260,6 @@ rect_min_size = Vector2( 150, 0 )
 custom_constants/separation = 15
 alignment = 1
 script = ExtResource( 12 )
-
-[node name="Direction" type="OptionButton" parent="PopupLayer/MovePopup/Window/Content/UserEntry"]
-visible = false
-margin_right = 150.0
-margin_bottom = 20.0
-hint_tooltip = "Direction for character move."
 
 [node name="Distance" type="SpinBox" parent="PopupLayer/MovePopup/Window/Content/UserEntry"]
 margin_top = 36.0
@@ -354,6 +342,174 @@ text = "Close"
 align = 1
 valign = 1
 
+[node name="DirectionPopup" type="Popup" parent="PopupLayer"]
+visible = true
+anchor_left = 0.515
+anchor_top = 0.01
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.509949
+margin_top = -7.68
+margin_right = -22.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background shadow" type="ColorRect" parent="PopupLayer/DirectionPopup"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0627451, 0.0823529, 0.0784314, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="NinePatchRect" parent="PopupLayer/DirectionPopup"]
+anchor_left = 0.2
+anchor_top = 0.375
+anchor_right = 0.8
+anchor_bottom = 0.625
+margin_top = -3.05176e-05
+texture = ExtResource( 7 )
+patch_margin_left = 14
+patch_margin_top = 15
+patch_margin_right = 13
+patch_margin_bottom = 14
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="PopupLayer/DirectionPopup/Window"]
+anchor_top = 0.042
+anchor_right = 0.979
+anchor_bottom = 0.208
+margin_left = 8.0
+margin_top = -0.064002
+margin_right = 0.0639648
+margin_bottom = 1.06399
+custom_fonts/font = ExtResource( 5 )
+text = "Turn"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Content" type="HBoxContainer" parent="PopupLayer/DirectionPopup/Window"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = -56.0
+margin_right = 160.0
+margin_bottom = 40.0
+grow_horizontal = 0
+custom_constants/separation = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Labels" type="VBoxContainer" parent="PopupLayer/DirectionPopup/Window/Content"]
+margin_right = 150.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+alignment = 1
+
+[node name="Direction Label" type="Label" parent="PopupLayer/DirectionPopup/Window/Content/Labels"]
+margin_top = 31.0
+margin_right = 150.0
+margin_bottom = 64.0
+custom_fonts/font = ExtResource( 5 )
+text = "Direction:"
+
+[node name="UserEntry" type="VBoxContainer" parent="PopupLayer/DirectionPopup/Window/Content"]
+margin_left = 170.0
+margin_right = 320.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/separation = 15
+alignment = 1
+script = ExtResource( 12 )
+
+[node name="Direction" type="OptionButton" parent="PopupLayer/DirectionPopup/Window/Content/UserEntry"]
+margin_top = 38.0
+margin_right = 150.0
+margin_bottom = 58.0
+hint_tooltip = "Direction for character move."
+
+[node name="Buttons" type="HBoxContainer" parent="PopupLayer/DirectionPopup/Window"]
+anchor_left = 0.021
+anchor_top = 0.75
+anchor_right = 0.979
+anchor_bottom = 0.958
+margin_left = -0.0640011
+margin_top = -1.52588e-05
+margin_right = 0.0639954
+margin_bottom = -7.936
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/separation = 100
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Direction Enter Button" type="Button" parent="PopupLayer/DirectionPopup/Window/Buttons"]
+margin_left = 44.0
+margin_right = 134.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/DirectionPopup/Window/Buttons/Direction Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/DirectionPopup/Window/Buttons/Direction Enter Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Ok"
+align = 1
+valign = 1
+
+[node name="Direction Close Button" type="Button" parent="PopupLayer/DirectionPopup/Window/Buttons"]
+margin_left = 234.0
+margin_right = 324.0
+margin_bottom = 32.0
+rect_min_size = Vector2( 90, 32 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Border" type="NinePatchRect" parent="PopupLayer/DirectionPopup/Window/Buttons/Direction Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+patch_margin_left = 14
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 12
+
+[node name="Label" type="Label" parent="PopupLayer/DirectionPopup/Window/Buttons/Direction Close Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Close"
+align = 1
+valign = 1
+
 [node name="CodeChunkLayer" type="CanvasLayer" parent="."]
 layer = 100
 
@@ -380,11 +536,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Move Chunk" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 8 )]
+[node name="Move Button" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 8 )]
 anchor_right = 0.0
-margin_top = 320.0
+margin_top = 278.0
 margin_right = 256.0
-margin_bottom = 384.0
+margin_bottom = 342.0
+
+[node name="Direction Button" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 13 )]
+anchor_right = 0.0
+margin_top = 362.0
+margin_right = 256.0
+margin_bottom = 426.0
 
 [node name="Command" type="Control" parent="CodeChunkLayer"]
 margin_left = 1056.0

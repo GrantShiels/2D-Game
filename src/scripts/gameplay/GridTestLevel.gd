@@ -9,6 +9,7 @@ var chunk_to_show
 
 #Create a variable for each of the popups
 var move_popup
+var direction_popup
 var if_popup
 var while_popup
 
@@ -17,8 +18,10 @@ var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chun
 
 func _ready():
 	
-	#Set the popup variables
+	#Set the popup variables with the correct nodes
 	move_popup = $PopupLayer/MovePopup
+	direction_popup = $PopupLayer/DirectionPopup
+
 	
 	
 	#For each button in the code chunks section
@@ -34,11 +37,17 @@ func _on_ChunkButton_pressed(chunk_type):
 	
 	#If the current_chunk is move then.
 	if current_chunk == "move":
-		
 		#Sets the current popup to move and shows it
 		current_popup = move_popup
 		current_popup.visible = true
-
+	
+	#if the current chunk is direction then	
+	if current_chunk == "direction":
+		#Sets the current popup to direction and shows it
+		current_popup = direction_popup
+		current_popup.visible = true
+	
+	#If the current chunk isn't recognised print Error
 	else:
 		print("error")
 
