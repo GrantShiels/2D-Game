@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/interface/game_screen/command_buldier/code_chunks/Base Chunk .tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/purple-cube.png" type="Texture" id=2]
+
+[node name="Direction Chunk" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+chunk_type = "direction"
+
+[node name="Type" parent="Info" index="0"]
+margin_left = 18.0
+margin_right = 162.0
+text = "Direction: "
+
+[node name="Value" parent="Info" index="1"]
+margin_left = 166.0
+margin_right = 222.0
+text = "Left"

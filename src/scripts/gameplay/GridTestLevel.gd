@@ -13,16 +13,24 @@ var direction_popup
 var if_popup
 var while_popup
 
+#are to show the code chunks
+var chunk_command
+
 #preload the chunk scenes
 var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk .tscn")
+var direction_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Direction Chunk.tscn")
 
 func _ready():
 	
 	#Set the popup variables with the correct nodes
 	move_popup = $PopupLayer/MovePopup
 	direction_popup = $PopupLayer/DirectionPopup
+	chunk_command = $CodeChunkLayer/Command/ChunkSprites
 
-	
+	#Adds items to the direction drop down box
+	var direction_dropdown
+	direction_dropdown = get_node("PopupLayer/DirectionPopup/Window/Content/UserEntry/Direction")
+	_add_items_Direction(direction_dropdown)
 	
 	#For each button in the code chunks section
 	for button in $CodeChunkLayer/CodeChunks/ChunkButtons.get_children():
@@ -67,10 +75,44 @@ func _on_Move_Enter_Button_pressed():
 	#Sets the value for that chunk to the user entered distance
 	chunk_to_show.chunk_value = distance
 	
-
 	#Create new sprite in the command block with the distance variable
-	var chunk_command = $CodeChunkLayer/Command/ChunkSprites
 	chunk_command.add_child(chunk_to_show)
 	
 	#Close the popup up when done
 	move_popup.visible = false
+
+#Closes the direction popup
+func _on_Direction_Close_Button_pressed():
+	direction_popup.visible = false
+
+#Closes and acepts data from the direction popup
+func _on_Direction_Enter_Button_pressed():
+	#Sets up the direction variable
+	var direction
+	#Gets the direction from the drop down box in the popup.
+	direction = $PopupLayer/DirectionPopup/Window/Content/UserEntry/Direction.selected
+	
+	#Creates a new instance of the direction chunk
+	chunk_to_show = direction_chunk.instance()
+	#Sets the calue of the chunk to the user entered variable
+	chunk_to_show.chunk_value = direction
+	
+	#Creates a new chunk in the command block with the direction variable
+	chunk_command.add_child(chunk_to_show)
+	
+	#Close the direction popup when done
+	direction_popup.visible = false
+	
+
+
+#
+#export (NodePath) var direction_dropdown_path
+#onready var direction_dropdown = get_node("Direction")
+
+
+#add items to the direction drop down box
+func _add_items_Direction(direction_dropdown):
+	direction_dropdown.add_item("Up")
+	direction_dropdown.add_item("Down")
+	direction_dropdown.add_item("Left")
+	direction_dropdown.add_item("Right")
