@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -12,25 +12,6 @@
 [ext_resource path="res://src/scripts/interface/popups/Base Popup.gd" type="Script" id=10]
 [ext_resource path="res://src/scripts/gameplay/GridTestLevel.gd" type="Script" id=11]
 [ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Direction Chunk Button.tscn" type="PackedScene" id=13]
-
-[sub_resource type="GDScript" id=3]
-script/source = "extends VBoxContainer
-
-export (NodePath) var direction_dropdown_path
-onready var direction_dropdown = get_node(\"Direction\")
-
-func _ready():
-	#Adds items to the direction drop down box
-	_add_items_Direction()
-
-
-func _add_items_Direction():
-#	direction_dropdown.add_item(\"Up\")
-#	direction_dropdown.add_item(\"Down\")
-#	direction_dropdown.add_item(\"Left\")
-#	direction_dropdown.add_item(\"Right\")
-	pass
-"
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -277,7 +258,6 @@ margin_bottom = 96.0
 rect_min_size = Vector2( 150, 0 )
 custom_constants/separation = 15
 alignment = 1
-script = SubResource( 3 )
 
 [node name="Distance" type="SpinBox" parent="PopupLayer/MovePopup/Window/Content/UserEntry"]
 margin_top = 36.0
@@ -631,23 +611,33 @@ patch_margin_top = 25
 patch_margin_right = 25
 patch_margin_bottom = 26
 __meta__ = {
-"_edit_lock_": true,
 "_edit_use_anchors_": true
 }
 
-[node name="Button" type="Button" parent="Background/Chunk Run"]
+[node name="Run Command" type="Button" parent="Background/Chunk Run"]
 anchor_left = 0.16279
 anchor_top = 0.885417
 anchor_right = 0.813743
 anchor_bottom = 0.958583
 margin_right = 0.0727234
 margin_bottom = -0.192017
-text = "Run"
 __meta__ = {
 "_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Background/Chunk Run/Run Command"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 5 )
+text = "Run"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
 }
 [connection signal="pressed" from="PopupLayer/Base Popup/Window/Buttons/Close Button" to="PopupLayer/Base Popup" method="_on_Close_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Enter Button" to="." method="_on_Move_Enter_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Close Button" to="." method="_on_Move_Close_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/DirectionPopup/Window/Buttons/Direction Enter Button" to="." method="_on_Direction_Enter_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/DirectionPopup/Window/Buttons/Direction Close Button" to="." method="_on_Direction_Close_Button_pressed"]
+[connection signal="pressed" from="Background/Chunk Run/Run Command" to="." method="_on_Run_Command_pressed"]

@@ -37,6 +37,12 @@ func _ready():
 		#when the button is pressed run function and get chunk_type
 		button.connect("pressed", self, "_on_ChunkButton_pressed", [button.chunk_type])
 
+#add items to the direction drop down box
+func _add_items_Direction(direction_dropdown):
+	direction_dropdown.add_item("Up")
+	direction_dropdown.add_item("Down")
+	direction_dropdown.add_item("Left")
+	direction_dropdown.add_item("Right")
 
 #Code runs when chunk button is bressed
 func _on_ChunkButton_pressed(chunk_type):
@@ -48,16 +54,14 @@ func _on_ChunkButton_pressed(chunk_type):
 		#Sets the current popup to move and shows it
 		current_popup = move_popup
 		current_popup.visible = true
-	
 	#if the current chunk is direction then	
-	if current_chunk == "direction":
+	elif current_chunk == "direction":
 		#Sets the current popup to direction and shows it
 		current_popup = direction_popup
 		current_popup.visible = true
-	
 	#If the current chunk isn't recognised print Error
 	else:
-		print("error")
+		print("error1")
 
 #Closes move popup
 func _on_Move_Close_Button_pressed():
@@ -113,17 +117,16 @@ func _on_Direction_Enter_Button_pressed():
 	
 	#Close the direction popup when done
 	direction_popup.visible = false
+
+#Button that will run the users finished command
+func _on_Run_Command_pressed():
+	#Create an array that will hold the users command
+	var user_command = []
 	
+	#For each chunk in the command
+	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
+		#get both the type and value of each of the chunks
+		var current_chunk_type = chunk.chunk_type
+		var current_chunk_value = chunk.chunk_value
 
 
-#
-#export (NodePath) var direction_dropdown_path
-#onready var direction_dropdown = get_node("Direction")
-
-
-#add items to the direction drop down box
-func _add_items_Direction(direction_dropdown):
-	direction_dropdown.add_item("Up")
-	direction_dropdown.add_item("Down")
-	direction_dropdown.add_item("Left")
-	direction_dropdown.add_item("Right")
