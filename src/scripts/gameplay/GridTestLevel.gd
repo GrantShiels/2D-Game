@@ -13,13 +13,17 @@ var direction_popup
 var if_popup
 var while_popup
 
-#are to show the code chunks
+#var to show the code chunks
 var chunk_command
 
 #preload the chunk scenes
 var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk .tscn")
 var direction_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Direction Chunk.tscn")
 
+#Array that will hold the data and type of the users command
+var user_command = []
+
+#Ready function
 func _ready():
 	
 	#Set the popup variables with the correct nodes
@@ -120,13 +124,12 @@ func _on_Direction_Enter_Button_pressed():
 
 #Button that will run the users finished command
 func _on_Run_Command_pressed():
-	#Create an array that will hold the users command
-	var user_command = []
-	
 	#For each chunk in the command
 	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
 		#get both the type and value of each of the chunks
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value
+		
+		
 
 
