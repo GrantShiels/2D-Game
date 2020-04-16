@@ -124,6 +124,9 @@ func _on_Direction_Enter_Button_pressed():
 
 #Button that will run the users finished command
 func _on_Run_Command_pressed():
+	#Resets the user_command array to blank
+	user_command = []
+	
 	#For each chunk in the command
 	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
 		#get both the type and value of each of the chunks
@@ -135,9 +138,61 @@ func _on_Run_Command_pressed():
 		
 		#insert the chunk as type and value into the command array
 		user_command.append(chunk_array)
-		
-		print(user_command)
-		
-		
+	
+	#Test print
+	print(user_command)
+	
+	_move_Player(user_command)
 
 
+#Function used to move the character		
+func _move_Player(user_command):
+	#set the current direction the player should be moving, will be used if a move
+	#chunk is placed without a direction chunk
+	var current_direction = "up"
+	
+	#For each entry in the user_command array
+	for chunk_string in user_command:
+		#get both the type and strign value
+		var chunk_string_type = chunk_string[0]
+		var chunk_string_value = chunk_string[1]
+		
+		#if the current type is direction then
+		if chunk_string_type == "direction":
+			#set the current direction
+			current_direction = chunk_string_value
+			
+		#Else if the current type is move then
+		elif chunk_string_type == "move":
+			#set the button that's to be pressed
+			var input_key = "move_" + current_direction
+			#set the amount of time that button will be pressed
+			var distance = chunk_string_value
+			
+			#run the mimic command
+			_mimic_Input_Press(input_key, distance)
+
+		else:
+			print("ERROR")
+			
+			
+
+#function that will mimic an Input press in the code
+func _mimic_Input_Press(key_to_mimic, press_count):
+	var event = InputEventAction.new()
+	event.action = key_to_mimic
+	
+	#set up for the timer
+	
+	#while distance isn't 0
+	while press_count != 0:
+		#take away 1 from the cunt each time
+		press_count = press_count - 1
+		
+		#mimic the pressing of a key
+		event.pressed = true
+		Input.parse_input_event(event)
+		
+		#wait half a second before doing again
+		
+	
