@@ -130,6 +130,14 @@ func _on_Run_Command_pressed():
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value
 		
+		#Create an array that holds both type and value
+		var chunk_array = [current_chunk_type, current_chunk_value]
+		
+		#insert the chunk as type and value into the command array
+		user_command.append(chunk_array)
+		
+		print(user_command)
+		
 		
 
 
