@@ -7,6 +7,5 @@ export(String) var chunk_type
 export(String) var chunk_value
 
 func _ready():
-	var value
 	$Info/Value.text = str(chunk_value)
 	

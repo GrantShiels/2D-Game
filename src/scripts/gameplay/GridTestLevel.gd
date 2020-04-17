@@ -144,15 +144,14 @@ func _on_Run_Command_pressed():
 	
 	_move_Player(user_command)
 
-
 #Function used to move the character		
-func _move_Player(user_command):
+func _move_Player(command_array):
 	#set the current direction the player should be moving, will be used if a move
 	#chunk is placed without a direction chunk
 	var current_direction = "up"
 	
 	#For each entry in the user_command array
-	for chunk_string in user_command:
+	for chunk_string in command_array:
 		#get both the type and strign value
 		var chunk_string_type = chunk_string[0]
 		var chunk_string_value = chunk_string[1]
@@ -161,9 +160,10 @@ func _move_Player(user_command):
 		if chunk_string_type == "direction":
 			#set the current direction
 			current_direction = chunk_string_value
-			
+			print(current_direction)
 		#Else if the current type is move then
 		elif chunk_string_type == "move":
+			print(current_direction)
 			#set the button that's to be pressed
 			var input_key = "move_" + current_direction
 			#set the amount of time that button will be pressed
@@ -174,25 +174,45 @@ func _move_Player(user_command):
 
 		else:
 			print("ERROR")
-			
-			
 
 #function that will mimic an Input press in the code
 func _mimic_Input_Press(key_to_mimic, press_count):
 	var event = InputEventAction.new()
 	event.action = key_to_mimic
 	
-	#set up for the timer
+	#set up for the press timer
+	var timer_press = Timer.new()
+	#Timer is so short due to being an isntant press
+	timer_press.set_wait_time(0.00001)
+	self.add_child(timer_press)
+	
+	#Set up for the wait timer
+	var timer_wait = Timer.new()
+	#Set timer to a decnt time so the character will move steadily
+	timer_wait.set_wait_time(1)
+	self.add_child(timer_wait)
+	
+	press_count = press_count + 1
 	
 	#while distance isn't 0
 	while press_count != 0:
-		#take away 1 from the cunt each time
-		press_count = press_count - 1
-		
 		#mimic the pressing of a key
 		event.pressed = true
 		Input.parse_input_event(event)
 		
 		#wait half a second before doing again
+		timer_press.start()
+		yield(timer_press, "timeout")
 		
+		#stop pressing the button
+		event.pressed = false
+		Input.parse_input_event(event)
+		
+		#Second timer to wait until the character has moved before doing anything
+		#Prevents the button being pressed multiple times without moving
+		timer_wait.start()
+		yield(timer_wait, "timeout")
+		
+		#take away 1 from the cunt each time
+		press_count = press_count - 1
 	
