@@ -65,7 +65,7 @@ func _on_ChunkButton_pressed(chunk_type):
 		current_popup.visible = true
 	#If the current chunk isn't recognised print Error
 	else:
-		print("error1")
+		print("error chunk button press")
 
 #Closes move popup
 func _on_Move_Close_Button_pressed():
@@ -103,13 +103,13 @@ func _on_Direction_Enter_Button_pressed():
 	
 	#Convert the direction int to string
 	if direction == 0:
-		direction_string = "Up"
+		direction_string = "up"
 	elif direction == 1:
-		direction_string = "Down"
+		direction_string = "down"
 	elif direction == 2:
-		direction_string = "Left"
+		direction_string = "left"
 	elif direction == 3:
-		direction_string = "Right"
+		direction_string = "right"
 	
 	#Creates a new instance of the direction chunk
 	chunk_to_show = direction_chunk.instance()
@@ -194,8 +194,11 @@ func _mimic_Input_Press(key_to_mimic, press_count):
 	
 	press_count = press_count + 1
 	
+	var test_count = 0
+	
 	#while distance isn't 0
 	while press_count != 0:
+		
 		#mimic the pressing of a key
 		event.pressed = true
 		Input.parse_input_event(event)
@@ -215,4 +218,6 @@ func _mimic_Input_Press(key_to_mimic, press_count):
 		
 		#take away 1 from the cunt each time
 		press_count = press_count - 1
+		test_count = test_count + 1
 	
+	print(test_count)
