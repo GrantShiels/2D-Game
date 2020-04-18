@@ -160,10 +160,8 @@ func _move_Player(command_array):
 		if chunk_string_type == "direction":
 			#set the current direction
 			current_direction = chunk_string_value
-			print(current_direction)
 		#Else if the current type is move then
 		elif chunk_string_type == "move":
-			print(current_direction)
 			#set the button that's to be pressed
 			var input_key = "move_" + current_direction
 			#set the amount of time that button will be pressed
@@ -177,8 +175,10 @@ func _move_Player(command_array):
 
 #function that will mimic an Input press in the code
 func _mimic_Input_Press(key_to_mimic, press_count):
+	#get the key to press
 	var event = InputEventAction.new()
 	event.action = key_to_mimic
+	print(key_to_mimic, "   ", press_count)
 	
 	#set up for the press timer
 	var timer_press = Timer.new()
@@ -192,32 +192,35 @@ func _mimic_Input_Press(key_to_mimic, press_count):
 	timer_wait.set_wait_time(1)
 	self.add_child(timer_wait)
 	
-	press_count = press_count + 1
+	press_count += 1
 	
-	var test_count = 0
-	
+	var zero = 0
 	#while distance isn't 0
-	while press_count != 0:
+	while zero < press_count:
 		
+		print("Press Count = ", zero)
 		#mimic the pressing of a key
 		event.pressed = true
 		Input.parse_input_event(event)
 		
-		#wait half a second before doing again
-		timer_press.start()
+		var testing = false
+			
+		#wait before un pressing the button
+		timer_press.start()			
 		yield(timer_press, "timeout")
 		
 		#stop pressing the button
 		event.pressed = false
 		Input.parse_input_event(event)
 		
+
 		#Second timer to wait until the character has moved before doing anything
 		#Prevents the button being pressed multiple times without moving
 		timer_wait.start()
 		yield(timer_wait, "timeout")
 		
+		
 		#take away 1 from the cunt each time
-		press_count = press_count - 1
-		test_count = test_count + 1
-	
-	print(test_count)
+		zero += 1
+
+	pass
