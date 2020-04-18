@@ -124,25 +124,15 @@ func _on_Direction_Enter_Button_pressed():
 
 #Button that will run the users finished command
 func _on_Run_Command_pressed():
-	#Resets the user_command array to blank
-	user_command = []
-	
 	#For each chunk in the command
 	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
 		#get both the type and value of each of the chunks
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value
 		
-		#Create an array that holds both type and value
-		var chunk_array = [current_chunk_type, current_chunk_value]
 		
-		#insert the chunk as type and value into the command array
-		user_command.append(chunk_array)
-	
-	#Test print
-	print(user_command)
-	
-	_move_Player(user_command)
+
+
 
 #Function used to move the character		
 func _move_Player(command_array):
@@ -169,6 +159,7 @@ func _move_Player(command_array):
 			
 			#run the mimic command
 			_mimic_Input_Press(input_key, distance)
+			
 
 		else:
 			print("ERROR")
