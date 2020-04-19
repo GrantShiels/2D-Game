@@ -20,6 +20,12 @@ var chunk_command
 var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk .tscn")
 var direction_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Direction Chunk.tscn")
 
+#event that is used to mimic button presses
+var move_event = InputEventAction.new()
+#set up for the press timer
+var timer_press = Timer.new()
+
+
 #Ready function
 func _ready():
 	
@@ -27,6 +33,11 @@ func _ready():
 	move_popup = $PopupLayer/MovePopup
 	direction_popup = $PopupLayer/DirectionPopup
 	chunk_command = $CodeChunkLayer/Command/ChunkSprites
+	
+	#Timer is so short due to being an isntant press
+	timer_press.set_wait_time(0.00001)
+	self.add_child(timer_press)
+	
 
 	#Adds items to the direction drop down box
 	var direction_dropdown
@@ -46,51 +57,22 @@ func _add_items_Direction(direction_dropdown):
 	direction_dropdown.add_item("Right")
 
 #function that will mimic an Input press in the code
-func _mimic_Input_Press(key_to_mimic, press_count):
+func _mimic_Input_Press(key_to_mimic):
+	
 	#get the key to press
-	var event = InputEventAction.new()
-	event.action = key_to_mimic
+	move_event.action = key_to_mimic
 	
-	#set up for the press timer
-	var timer_press = Timer.new()
-	#Timer is so short due to being an isntant press
-	timer_press.set_wait_time(0.00001)
-	self.add_child(timer_press)
+	#start pressing the button
+	move_event.pressed = true
+	Input.parse_input_event(move_event)
 	
-	#Set up for the wait timer
-	var timer_wait = Timer.new()
-	#Set timer to a decnt time so the character will move steadily
-	timer_wait.set_wait_time(1)
-	self.add_child(timer_wait)
-	
-	press_count += 1
+	#wait before un pressing the button
+	timer_press.start()
+	yield(timer_press, "timeout")
 
-
-	#while press_count > 0:
-	while press_count > 0:
-		
-		print("Press Count = ", press_count)
-#		#mimic the pressing of a key
-#		event.pressed = true
-#		Input.parse_input_event(event)
-#
-#		#wait before un pressing the button
-#		timer_press.start()			
-#		yield(timer_press, "timeout")
-#
-#		#stop pressing the button
-#		event.pressed = false
-#		Input.parse_input_event(event)
-#
-#
-#		#Second timer to wait until the character has moved before doing anything
-#		#Prevents the button being pressed multiple times without moving
-#		timer_wait.start()
-#		yield(timer_wait, "timeout")
-		
-		
-		#take away 1 from the count each time
-		press_count = press_count - 1
+	#stop pressing the button
+	move_event.pressed = false
+	Input.parse_input_event(move_event)
 
 #Code runs when chunk button is bressed
 func _on_ChunkButton_pressed(chunk_type):
@@ -168,7 +150,9 @@ func _on_Direction_Enter_Button_pressed():
 
 #Button that will run the users finished command
 func _on_Run_Command_pressed():
+	#Set direction to up incase user places move chunk first
 	var current_direction = "up"
+	var count = 0
 	
 	#For each chunk in the command
 	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
@@ -176,10 +160,17 @@ func _on_Run_Command_pressed():
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value
 		
+		#Set up for the wait timer
+		var timer_wait = Timer.new()
+		#Set timer to a decnt time so the character will move steadily
+		timer_wait.set_wait_time(0.5)
+		self.add_child(timer_wait)
+		
 		#if the chunk is diretion
 		if chunk.chunk_type == "direction":
 			#Then change current direction to the value
 			current_direction = chunk.chunk_value
+
 		#Else if the chunk type is move then	
 		elif chunk.chunk_type == "move":
 			#Set up the move with the current direction 
@@ -188,9 +179,27 @@ func _on_Run_Command_pressed():
 			var distance = chunk.chunk_value
 			
 			print(move_type, " for ", distance)
-			#Then run the Move Character function
-			_mimic_Input_Press(move_type, distance)
 			
+			if count == 0:
+				distance += 1
+			
+			while distance > 0:
+				
+				print("moving")
+				#Then run the Move Character function
+				_mimic_Input_Press(move_type)
+				
+				#Second timer to wait until the character has moved before doing anything
+				#Prevents the button being pressed multiple times without moving
+				timer_wait.start()
+				yield(timer_wait, "timeout")
+				
+				
+				distance -= 1
+				count += 1
+
 		else:
 			print("ERROR: Chunk type not recognised")
+		
+		count += 1
 
