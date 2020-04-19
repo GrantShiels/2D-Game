@@ -8,7 +8,7 @@ var current_popup
 var chunk_to_show
 
 #Create a variable for each of the popups
-var move_popup
+var move_popup 
 var direction_popup
 var if_popup
 var while_popup
@@ -19,9 +19,6 @@ var chunk_command
 #preload the chunk scenes
 var move_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Move Chunk .tscn")
 var direction_chunk = load("res://src/interface/game_screen/command_buldier/code_chunks/Direction Chunk.tscn")
-
-#Array that will hold the data and type of the users command
-var user_command = []
 
 #Ready function
 func _ready():
@@ -47,6 +44,53 @@ func _add_items_Direction(direction_dropdown):
 	direction_dropdown.add_item("Down")
 	direction_dropdown.add_item("Left")
 	direction_dropdown.add_item("Right")
+
+#function that will mimic an Input press in the code
+func _mimic_Input_Press(key_to_mimic, press_count):
+	#get the key to press
+	var event = InputEventAction.new()
+	event.action = key_to_mimic
+	
+	#set up for the press timer
+	var timer_press = Timer.new()
+	#Timer is so short due to being an isntant press
+	timer_press.set_wait_time(0.00001)
+	self.add_child(timer_press)
+	
+	#Set up for the wait timer
+	var timer_wait = Timer.new()
+	#Set timer to a decnt time so the character will move steadily
+	timer_wait.set_wait_time(1)
+	self.add_child(timer_wait)
+	
+	press_count += 1
+
+
+	#while press_count > 0:
+	while press_count > 0:
+		
+		print("Press Count = ", press_count)
+#		#mimic the pressing of a key
+#		event.pressed = true
+#		Input.parse_input_event(event)
+#
+#		#wait before un pressing the button
+#		timer_press.start()			
+#		yield(timer_press, "timeout")
+#
+#		#stop pressing the button
+#		event.pressed = false
+#		Input.parse_input_event(event)
+#
+#
+#		#Second timer to wait until the character has moved before doing anything
+#		#Prevents the button being pressed multiple times without moving
+#		timer_wait.start()
+#		yield(timer_wait, "timeout")
+		
+		
+		#take away 1 from the count each time
+		press_count = press_count - 1
 
 #Code runs when chunk button is bressed
 func _on_ChunkButton_pressed(chunk_type):
@@ -124,94 +168,29 @@ func _on_Direction_Enter_Button_pressed():
 
 #Button that will run the users finished command
 func _on_Run_Command_pressed():
+	var current_direction = "up"
+	
 	#For each chunk in the command
 	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
 		#get both the type and value of each of the chunks
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value
 		
-		
-
-
-
-#Function used to move the character		
-func _move_Player(command_array):
-	#set the current direction the player should be moving, will be used if a move
-	#chunk is placed without a direction chunk
-	var current_direction = "up"
-	
-	#For each entry in the user_command array
-	for chunk_string in command_array:
-		#get both the type and strign value
-		var chunk_string_type = chunk_string[0]
-		var chunk_string_value = chunk_string[1]
-		
-		#if the current type is direction then
-		if chunk_string_type == "direction":
-			#set the current direction
-			current_direction = chunk_string_value
-		#Else if the current type is move then
-		elif chunk_string_type == "move":
-			#set the button that's to be pressed
-			var input_key = "move_" + current_direction
-			#set the amount of time that button will be pressed
-			var distance = chunk_string_value
+		#if the chunk is diretion
+		if chunk.chunk_type == "direction":
+			#Then change current direction to the value
+			current_direction = chunk.chunk_value
+		#Else if the chunk type is move then	
+		elif chunk.chunk_type == "move":
+			#Set up the move with the current direction 
+			var move_type = "move_" + current_direction
+			#distance is the chunk_value if the chunk type is move
+			var distance = chunk.chunk_value
 			
-			#run the mimic command
-			_mimic_Input_Press(input_key, distance)
+			print(move_type, " for ", distance)
+			#Then run the Move Character function
+			_mimic_Input_Press(move_type, distance)
 			
-
 		else:
-			print("ERROR")
+			print("ERROR: Chunk type not recognised")
 
-#function that will mimic an Input press in the code
-func _mimic_Input_Press(key_to_mimic, press_count):
-	#get the key to press
-	var event = InputEventAction.new()
-	event.action = key_to_mimic
-	print(key_to_mimic, "   ", press_count)
-	
-	#set up for the press timer
-	var timer_press = Timer.new()
-	#Timer is so short due to being an isntant press
-	timer_press.set_wait_time(0.00001)
-	self.add_child(timer_press)
-	
-	#Set up for the wait timer
-	var timer_wait = Timer.new()
-	#Set timer to a decnt time so the character will move steadily
-	timer_wait.set_wait_time(1)
-	self.add_child(timer_wait)
-	
-	press_count += 1
-	
-	var zero = 0
-	#while distance isn't 0
-	while zero < press_count:
-		
-		print("Press Count = ", zero)
-		#mimic the pressing of a key
-		event.pressed = true
-		Input.parse_input_event(event)
-		
-		var testing = false
-			
-		#wait before un pressing the button
-		timer_press.start()			
-		yield(timer_press, "timeout")
-		
-		#stop pressing the button
-		event.pressed = false
-		Input.parse_input_event(event)
-		
-
-		#Second timer to wait until the character has moved before doing anything
-		#Prevents the button being pressed multiple times without moving
-		timer_wait.start()
-		yield(timer_wait, "timeout")
-		
-		
-		#take away 1 from the cunt each time
-		zero += 1
-
-	pass
