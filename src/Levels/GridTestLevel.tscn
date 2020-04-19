@@ -41,9 +41,9 @@ script = ExtResource( 11 )
 layer = 128
 
 [node name="User Interface" parent="PauseLayer" instance=ExtResource( 1 )]
-visible = false
 margin_left = 0.0
 margin_top = 0.0
+mouse_filter = 2
 
 [node name="PopupLayer" type="CanvasLayer" parent="."]
 layer = 120
