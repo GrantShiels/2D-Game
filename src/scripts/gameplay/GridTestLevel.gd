@@ -171,6 +171,7 @@ func _on_Run_Command_pressed():
 			#Then change current direction to the value
 			current_direction = chunk.chunk_value
 
+
 		#Else if the chunk type is move then	
 		elif chunk.chunk_type == "move":
 			#Set up the move with the current direction 
