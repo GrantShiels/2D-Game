@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://src/entities/Goal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Direction Chunk Button.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/Levels/TestGoalLevel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/interface/game_screen/pause_screen/Retry Level Button.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 32 )
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 64, 64, 0, 64, 0, 0, 64, 0 )
@@ -546,18 +550,13 @@ margin_top = 362.0
 margin_right = 256.0
 margin_bottom = 426.0
 
-[node name="Command" type="Control" parent="CodeChunkLayer"]
+[node name="Command" type="ScrollContainer" parent="CodeChunkLayer"]
 margin_left = 1056.0
 margin_top = 32.0
 margin_right = 1312.0
 margin_bottom = 656.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ChunkSprites" type="VBoxContainer" parent="CodeChunkLayer/Command"]
-anchor_right = 1.0
-anchor_bottom = 1.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -580,6 +579,12 @@ script = ExtResource( 3 )
 position = Vector2( 32, 32 )
 enabled = true
 cast_to = Vector2( 0, 32 )
+
+[node name="Area2D" type="Area2D" parent="Game Level Layer/Player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Game Level Layer/Player/Area2D"]
+position = Vector2( 32, 32 )
+shape = SubResource( 3 )
 
 [node name="Level Walls" type="TileMap" parent="Game Level Layer"]
 tile_set = SubResource( 2 )
@@ -622,9 +627,9 @@ __meta__ = {
 }
 
 [node name="Run Command" type="Button" parent="Background/Chunk Run"]
-anchor_left = 0.16279
+anchor_left = 0.0749985
 anchor_top = 0.885417
-anchor_right = 0.813743
+anchor_right = 0.474771
 anchor_bottom = 0.958583
 margin_right = 0.0727234
 margin_bottom = -0.192017
@@ -642,9 +647,22 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Reset Button" parent="Background/Chunk Run" instance=ExtResource( 15 )]
+anchor_left = 0.525
+anchor_top = 0.885
+anchor_right = 0.925
+anchor_bottom = 0.958
+margin_left = 4.57764e-05
+margin_top = 0.319946
+margin_right = 9.15527e-05
+margin_bottom = 0.255981
+text = "Reset"
 [connection signal="pressed" from="PopupLayer/Base Popup/Window/Buttons/Close Button" to="PopupLayer/Base Popup" method="_on_Close_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Enter Button" to="." method="_on_Move_Enter_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Close Button" to="." method="_on_Move_Close_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/DirectionPopup/Window/Buttons/Direction Enter Button" to="." method="_on_Direction_Enter_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/DirectionPopup/Window/Buttons/Direction Close Button" to="." method="_on_Direction_Close_Button_pressed"]
+[connection signal="area_entered" from="Game Level Layer/Goal2D" to="Game Level Layer/Goal2D" method="_on_Goal2D_area_entered"]
 [connection signal="pressed" from="Background/Chunk Run/Run Command" to="." method="_on_Run_Command_pressed"]
+[connection signal="pressed" from="Background/Chunk Run/Reset Button" to="." method="_on_Reset_Button_pressed"]

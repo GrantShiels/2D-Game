@@ -204,3 +204,7 @@ func _on_Run_Command_pressed():
 		
 		count += 1
 
+#Reset the command and level
+func _on_Reset_Button_pressed():
+	get_tree().paused = false
+	get_tree().reload_current_scene()

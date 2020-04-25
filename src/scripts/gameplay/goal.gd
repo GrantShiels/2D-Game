@@ -8,14 +8,11 @@ onready var fade_animation: AnimationPlayer = $FadeAnimation
 #var for the next level 
 export var next_scene : PackedScene
 
-
-#when somthing enters the goal
-func _on_Goal2D_body_entered(body):
-	
+#detecs whether the player enters the goal
+func _on_Goal2D_area_entered(area):
 	print("entered goal")
 	#Call the level complete function 
 	_level_complete()
-
 
 #Display warning if no next_scen 
 func _get_configuration_warning() -> String:
