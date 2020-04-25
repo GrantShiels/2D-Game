@@ -170,6 +170,8 @@ func _on_Run_Command_pressed():
 		if chunk.chunk_type == "direction":
 			#Then change current direction to the value
 			current_direction = chunk.chunk_value
+			
+			count += 1
 
 
 		#Else if the chunk type is move then	
@@ -201,7 +203,6 @@ func _on_Run_Command_pressed():
 
 		else:
 			print("ERROR: Chunk type not recognised")
-		
 		count += 1
 
 #Reset the command and level
