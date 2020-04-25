@@ -1,10 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Levels/New Game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/title_screen/Title.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/font/font_title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/scripts/title_screen/MenuButton.gd" type="Script" id=3]
+[ext_resource path="res://assets/font/RifficFree-Bold.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://src/interface/title_screen/transition_fade/Transition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/scripts/title_screen/fade_in.gd" type="Script" id=6]
 
-[node name="Level Select" instance=ExtResource( 1 )]
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 4 )
+
+[node name="LevelSelect" instance=ExtResource( 1 )]
 
 [node name="VBoxContainer" parent="CenterContainer" index="0"]
 margin_left = 683.0
@@ -17,25 +24,16 @@ visible = false
 margin_right = 262.0
 text = "Level Select Scene"
 
-[node name="Title" type="Label" parent="." index="1" instance=ExtResource( 2 )]
+[node name="Title" parent="." index="1" instance=ExtResource( 2 )]
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -520.0
 margin_top = 22.0
 margin_right = 520.0
 margin_bottom = 206.0
-custom_fonts/font = ExtResource( 3 )
-custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
-custom_constants/shadow_offset_x = 0
-custom_constants/shadow_offset_y = 7
 text = "Level Select"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." index="2"]
+[node name="Buttons" type="HBoxContainer" parent="." index="2"]
 anchor_left = 0.039
 anchor_top = 0.266
 anchor_right = 0.962
@@ -43,10 +41,285 @@ anchor_bottom = 0.952
 margin_left = -0.274002
 margin_top = -0.287994
 margin_right = -0.092041
-margin_bottom = -0.135986
+margin_bottom = 0.864014
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" index="0"]
-margin_bottom = 527.0
+[node name="LineOne" type="VBoxContainer" parent="Buttons" index="0"]
+margin_right = 628.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 35
+alignment = 1
+
+[node name="Level 1" type="Button" parent="Buttons/LineOne" index="0"]
+margin_top = 44.0
+margin_right = 628.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineOne/Level 1" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 1"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 2" type="Button" parent="Buttons/LineOne" index="1"]
+margin_top = 139.0
+margin_right = 628.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineOne/Level 2" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 2"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 3" type="Button" parent="Buttons/LineOne" index="2"]
+margin_top = 234.0
+margin_right = 628.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineOne/Level 3" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 3"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 4" type="Button" parent="Buttons/LineOne" index="3"]
+margin_top = 329.0
+margin_right = 628.0
+margin_bottom = 389.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineOne/Level 4" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 4"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 5" type="Button" parent="Buttons/LineOne" index="4"]
+margin_top = 424.0
+margin_right = 628.0
+margin_bottom = 484.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineOne/Level 5" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 5"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LineTwo" type="VBoxContainer" parent="Buttons" index="1"]
+margin_left = 632.0
+margin_right = 1261.0
+margin_bottom = 528.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 35
+alignment = 1
+
+[node name="Level 6" type="Button" parent="Buttons/LineTwo" index="0"]
+margin_top = 44.0
+margin_right = 629.0
+margin_bottom = 104.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineTwo/Level 6" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 6"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 7" type="Button" parent="Buttons/LineTwo" index="1"]
+margin_top = 139.0
+margin_right = 629.0
+margin_bottom = 199.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineTwo/Level 7" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 7"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 8" type="Button" parent="Buttons/LineTwo" index="2"]
+margin_top = 234.0
+margin_right = 629.0
+margin_bottom = 294.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineTwo/Level 8" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 8"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 9" type="Button" parent="Buttons/LineTwo" index="3"]
+margin_top = 329.0
+margin_right = 629.0
+margin_bottom = 389.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineTwo/Level 9" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 9"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Level 10" type="Button" parent="Buttons/LineTwo" index="4"]
+margin_top = 424.0
+margin_right = 629.0
+margin_bottom = 484.0
+rect_min_size = Vector2( 360, 60 )
+flat = true
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+
+[node name="Label" type="Label" parent="Buttons/LineTwo/Level 10" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.858824, 0.364706, 0.490196, 1 )
+custom_constants/shadow_offset_x = 0
+custom_constants/shadow_offset_y = 5
+text = "Level 10"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Transition" type="ColorRect" parent="." index="3" instance=ExtResource( 5 )]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.2 )
+script = ExtResource( 6 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="fade_finished" from="Transition" to="." method="_on_Transition_fade_finished"]
