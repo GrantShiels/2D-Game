@@ -6,4 +6,4 @@
 scene_to_load = "res://src/Levels/GridTestLevel.tscn"
 
 [node name="Label" parent="." index="0"]
-text = "Start Game"
+text = "New Game"
