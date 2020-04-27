@@ -60,6 +60,7 @@ margin_top = 52.0
 margin_right = 518.0
 margin_bottom = 112.0
 script = SubResource( 1 )
+scene_to_load = "res://src/Levels/Level1.tscn"
 
 [node name="Level Select Button" parent="Menu/CentreRow/Buttons" instance=ExtResource( 5 )]
 margin_top = 130.0

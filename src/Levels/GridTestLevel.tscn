@@ -581,6 +581,7 @@ enabled = true
 cast_to = Vector2( 0, 32 )
 
 [node name="Area2D" type="Area2D" parent="Game Level Layer/Player"]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Game Level Layer/Player/Area2D"]
 position = Vector2( 32, 32 )
