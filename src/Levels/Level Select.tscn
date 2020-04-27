@@ -192,7 +192,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+scene_to_load = "res://src/Levels/Level6.tscn"
 
 [node name="Label" type="Label" parent="Buttons/LineTwo/Level 6" index="0"]
 anchor_right = 1.0
@@ -216,7 +216,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+scene_to_load = "res://src/Levels/Level7.tscn"
 
 [node name="Label" type="Label" parent="Buttons/LineTwo/Level 7" index="0"]
 anchor_right = 1.0
@@ -240,7 +240,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+scene_to_load = "res://src/Levels/Level8.tscn"
 
 [node name="Label" type="Label" parent="Buttons/LineTwo/Level 8" index="0"]
 anchor_right = 1.0
@@ -264,7 +264,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+scene_to_load = "res://src/Levels/Level9.tscn"
 
 [node name="Label" type="Label" parent="Buttons/LineTwo/Level 9" index="0"]
 anchor_right = 1.0
@@ -288,7 +288,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-scene_to_load = "res://src/Levels/GridTestLevel.tscn"
+scene_to_load = "res://src/Levels/Level10.tscn"
 
 [node name="Label" type="Label" parent="Buttons/LineTwo/Level 10" index="0"]
 anchor_right = 1.0
