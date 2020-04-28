@@ -1,11 +1,11 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://src/interface/game_screen/User Interface.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
 [ext_resource path="res://src/scripts/gameplay/Player.gd" type="Script" id=3]
 [ext_resource path="res://assets/level-walls.png" type="Texture" id=4]
 [ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/ui-background.png" type="Texture" id=6]
+[ext_resource path="res://assets/pink-cube.png" type="Texture" id=6]
 [ext_resource path="res://assets/ui-panel-tile.png" type="Texture" id=7]
 [ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Move Chunk Button.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/cancel-button.png" type="Texture" id=9]
@@ -13,8 +13,9 @@
 [ext_resource path="res://src/scripts/gameplay/GridTestLevel.gd" type="Script" id=11]
 [ext_resource path="res://src/entities/Goal.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/interface/game_screen/command_buldier/chunk_buttons/Direction Chunk Button.tscn" type="PackedScene" id=13]
-[ext_resource path="res://src/Levels/TestGoalLevel.tscn" type="PackedScene" id=14]
+[ext_resource path="res://src/interface/title_screen/TitleScreen.tscn" type="PackedScene" id=14]
 [ext_resource path="res://src/interface/game_screen/pause_screen/Retry Level Button.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/yellow-cube.png" type="Texture" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -618,7 +619,7 @@ anchor_right = 0.984261
 anchor_bottom = 1.0
 margin_left = 0.509949
 margin_right = -0.500122
-texture = ExtResource( 6 )
+texture = ExtResource( 16 )
 patch_margin_left = 25
 patch_margin_top = 25
 patch_margin_right = 25
@@ -659,6 +660,15 @@ margin_top = 0.319946
 margin_right = 9.15527e-05
 margin_bottom = 0.255981
 text = "Reset"
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+anchor_right = 0.51
+anchor_bottom = 1.0
+margin_right = 7.3399
+color = Color( 0.133333, 0.360784, 0.580392, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 [connection signal="pressed" from="PopupLayer/Base Popup/Window/Buttons/Close Button" to="PopupLayer/Base Popup" method="_on_Close_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Enter Button" to="." method="_on_Move_Enter_Button_pressed"]
 [connection signal="pressed" from="PopupLayer/MovePopup/Window/Buttons/Move Close Button" to="." method="_on_Move_Close_Button_pressed"]

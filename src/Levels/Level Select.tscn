@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/Levels/New Game.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/interface/title_screen/Title.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/scripts/title_screen/MenuButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/font/RifficFree-Bold.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/interface/title_screen/transition_fade/Transition.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/font/font_default.tres" type="DynamicFont" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -305,4 +306,24 @@ __meta__ = {
 
 [node name="Transition" parent="." index="3" instance=ExtResource( 5 )]
 visible = false
+
+[node name="Back Button" type="Button" parent="." index="4"]
+anchor_left = 0.0288595
+anchor_top = 0.0502725
+anchor_right = 0.11186
+anchor_bottom = 0.107272
+margin_right = 0.621994
+margin_bottom = 0.223999
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="Back Button" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 6 )
+text = "< Back"
+align = 1
+valign = 1
 [connection signal="fade_finished" from="Transition" to="." method="_on_Transition_fade_finished"]
+[connection signal="pressed" from="Back Button" to="." method="_on_Back_Button_pressed"]
