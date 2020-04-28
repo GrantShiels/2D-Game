@@ -40,6 +40,7 @@ __meta__ = {
 }
 
 [node name="Title" parent="Menu" instance=ExtResource( 1 )]
+text = "Klink"
 
 [node name="CentreRow" type="HBoxContainer" parent="Menu"]
 margin_top = 188.0

@@ -1,2 +1,0 @@
-﻿54449
-C:\Program Files (x86)\Godot Mono\Godot_v3.2-stable_mono_win64.exe
