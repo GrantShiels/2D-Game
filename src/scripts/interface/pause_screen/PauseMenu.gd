@@ -28,3 +28,5 @@ func _on_Quit_Game_Button_pressed():
 func _on_Resume_Game_Button_pressed():
 	self.paused = not paused
 	scene_tree.set_input_as_handled()
+
+

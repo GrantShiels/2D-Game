@@ -32,7 +32,7 @@ func _ready():
 	#Set the popup variables with the correct nodes
 	move_popup = $PopupLayer/MovePopup
 	direction_popup = $PopupLayer/DirectionPopup
-	chunk_command = $CodeChunkLayer/Command/ChunkSprites
+	chunk_command = $CodeCommandLayer/Command/ChunkSprites
 	
 	#Timer is so short due to being an isntant press
 	timer_press.set_wait_time(0.00001)
@@ -45,7 +45,7 @@ func _ready():
 	_add_items_Direction(direction_dropdown)
 	
 	#For each button in the code chunks section
-	for button in $CodeChunkLayer/CodeChunks/ChunkButtons.get_children():
+	for button in $CodeCommandLayer/CodeChunks/ChunkButtons.get_children():
 		#when the button is pressed run function and get chunk_type
 		button.connect("pressed", self, "_on_ChunkButton_pressed", [button.chunk_type])
 
@@ -155,7 +155,7 @@ func _on_Run_Command_pressed():
 	var count = 0
 	
 	#For each chunk in the command
-	for chunk in $CodeChunkLayer/Command/ChunkSprites.get_children():
+	for chunk in $CodeCommandLayer/Command/ChunkSprites.get_children():
 		#get both the type and value of each of the chunks
 		var current_chunk_type = chunk.chunk_type
 		var current_chunk_value = chunk.chunk_value

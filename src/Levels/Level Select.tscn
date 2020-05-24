@@ -304,10 +304,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Transition" parent="." index="3" instance=ExtResource( 5 )]
-visible = false
-
-[node name="Back Button" type="Button" parent="." index="4"]
+[node name="Back Button" type="Button" parent="." index="3"]
 anchor_left = 0.0288595
 anchor_top = 0.0502725
 anchor_right = 0.11186
@@ -325,5 +322,8 @@ custom_fonts/font = ExtResource( 6 )
 text = "< Back"
 align = 1
 valign = 1
-[connection signal="fade_finished" from="Transition" to="." method="_on_Transition_fade_finished"]
+
+[node name="Transition" parent="." index="4" instance=ExtResource( 5 )]
+visible = false
 [connection signal="pressed" from="Back Button" to="." method="_on_Back_Button_pressed"]
+[connection signal="fade_finished" from="Transition" to="." method="_on_Transition_fade_finished"]

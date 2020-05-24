@@ -513,10 +513,10 @@ text = "Close"
 align = 1
 valign = 1
 
-[node name="CodeChunkLayer" type="CanvasLayer" parent="."]
+[node name="CodeCommandLayer" type="CanvasLayer" parent="."]
 layer = 100
 
-[node name="CodeChunks" type="Control" parent="CodeChunkLayer"]
+[node name="CodeChunks" type="Control" parent="CodeCommandLayer"]
 margin_left = 736.0
 margin_top = 32.0
 margin_right = 992.0
@@ -527,7 +527,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChunkButtons" type="VBoxContainer" parent="CodeChunkLayer/CodeChunks"]
+[node name="ChunkButtons" type="VBoxContainer" parent="CodeCommandLayer/CodeChunks"]
 margin_right = 256.0
 margin_bottom = 704.0
 size_flags_horizontal = 3
@@ -539,25 +539,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Move Button" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 8 )]
+[node name="Move Button" parent="CodeCommandLayer/CodeChunks/ChunkButtons" instance=ExtResource( 8 )]
 anchor_right = 0.0
 margin_top = 278.0
 margin_right = 256.0
 margin_bottom = 342.0
 
-[node name="Direction Button" parent="CodeChunkLayer/CodeChunks/ChunkButtons" instance=ExtResource( 13 )]
+[node name="Direction Button" parent="CodeCommandLayer/CodeChunks/ChunkButtons" instance=ExtResource( 13 )]
 anchor_right = 0.0
 margin_top = 362.0
 margin_right = 256.0
 margin_bottom = 426.0
 
-[node name="Command" type="ScrollContainer" parent="CodeChunkLayer"]
+[node name="Command" type="ScrollContainer" parent="CodeCommandLayer"]
 margin_left = 1056.0
 margin_top = 32.0
 margin_right = 1312.0
 margin_bottom = 656.0
 
-[node name="ChunkSprites" type="VBoxContainer" parent="CodeChunkLayer/Command"]
+[node name="ChunkSprites" type="VBoxContainer" parent="CodeCommandLayer/Command"]
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
